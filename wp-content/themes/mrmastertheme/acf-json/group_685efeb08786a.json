@@ -1,0 +1,206 @@
+{
+    "key": "group_685efeb08786a",
+    "title": "Gallery Fields",
+    "fields": [
+        {
+            "key": "field_685efeb09463a",
+            "label": "Media Gallery",
+            "name": "media_gallery",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 1,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Media",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_685efeb0a6a4c",
+                    "label": "Media Type",
+                    "name": "media_type",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "Image",
+                    "ui_off_text": "Video",
+                    "ui": 1,
+                    "parent_repeater": "field_685efeb09463a"
+                },
+                {
+                    "key": "field_685efeb0aa525",
+                    "label": "Slide Image",
+                    "name": "slide_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Recommended dimensions : ????px X ???px",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_685efeb0a6a4c",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium",
+                    "parent_repeater": "field_685efeb09463a"
+                },
+                {
+                    "key": "field_685efeb0adfd1",
+                    "label": "Slide Video",
+                    "name": "slide_video",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_685efeb0a6a4c",
+                                "operator": "!=",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "parent_repeater": "field_685efeb09463a",
+                    "sub_fields": [
+                        {
+                            "key": "field_685efeb0b99de",
+                            "label": "Video Link",
+                            "name": "video_link",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "YouTube or Vimeo video links are allowed. Include the entire video link. For example: <br>\r\n<ul>\r\n<li>https:\/\/www.youtube.com\/watch?v=LiCiLb1J64E<\/li>\r\n<li>https:\/\/vimeo.com\/190544188<\/li>\r\n<\/ul>",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_685efeb0bd4af",
+                            "label": "Poster Image",
+                            "name": "poster_image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "If this field isn't used, a poster image will be generated automatically",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "50",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "allow_in_bindings": 0,
+                            "preview_size": "full"
+                        },
+                        {
+                            "key": "field_685efeb0c0dd7",
+                            "label": "Video Description",
+                            "name": "video_description",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "It's proper accessibility practice to include a short description of the video for visually-impaired users",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "allow_in_bindings": 0,
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "mandr_gallery"
+            }
+        ]
+    ],
+    "menu_order": -1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776266834
+}

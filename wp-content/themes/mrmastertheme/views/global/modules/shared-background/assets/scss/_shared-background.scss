@@ -1,0 +1,177 @@
+main > div.shared-background,
+article > div.shared-background {
+    // Match the structural selectors so the wrapper wins without !important.
+    &:has(span.padding[data-top-padding-desktop='double']),
+    &:has(span.padding[data-padding-top-desktop='double']),
+    &:has(span.padding[data-bottom-padding-desktop='double']),
+    &:has(span.padding[data-padding-bottom-desktop='double']),
+    &:has(span.padding[data-top-padding-desktop='single']),
+    &:has(span.padding[data-padding-top-desktop='single']),
+    &:has(span.padding[data-bottom-padding-desktop='single']),
+    &:has(span.padding[data-padding-bottom-desktop='single']),
+    &:has(span.padding[data-top-padding-desktop='none']),
+    &:has(span.padding[data-padding-top-desktop='none']),
+    &:has(span.padding[data-bottom-padding-desktop='none']),
+    &:has(span.padding[data-padding-bottom-desktop='none']) {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    &:has(span.padding[data-top-padding-mobile='double']),
+    &:has(span.padding[data-padding-top-mobile='double']),
+    &:has(span.padding[data-bottom-padding-mobile='double']),
+    &:has(span.padding[data-padding-bottom-mobile='double']),
+    &:has(span.padding[data-top-padding-mobile='single']),
+    &:has(span.padding[data-padding-top-mobile='single']),
+    &:has(span.padding[data-bottom-padding-mobile='single']),
+    &:has(span.padding[data-padding-bottom-mobile='single']),
+    &:has(span.padding[data-top-padding-mobile='none']),
+    &:has(span.padding[data-padding-top-mobile='none']),
+    &:has(span.padding[data-bottom-padding-mobile='none']),
+    &:has(span.padding[data-padding-bottom-mobile='none']) {
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+
+div.shared-background {
+    // The shared wrapper should stay structurally neutral.
+    // Module-level :has() settings belong to its direct child modules, not the wrapper itself.
+
+    > section,
+    > aside,
+    > div {
+        position: relative;
+        z-index: 1;
+
+        // Restore the usual top-level module padding behavior for wrapped modules.
+        &:has(span.padding[data-top-padding-desktop='double']),
+        &:has(span.padding[data-padding-top-desktop='double']) {
+            padding-top: $global_module_padding_double;
+        }
+
+        &:has(span.padding[data-bottom-padding-desktop='double']),
+        &:has(span.padding[data-padding-bottom-desktop='double']) {
+            padding-bottom: $global_module_padding_double;
+        }
+
+        &:has(span.padding[data-top-padding-desktop='single']),
+        &:has(span.padding[data-padding-top-desktop='single']) {
+            padding-top: $global_module_padding_single;
+        }
+
+        &:has(span.padding[data-bottom-padding-desktop='single']),
+        &:has(span.padding[data-padding-bottom-desktop='single']) {
+            padding-bottom: $global_module_padding_single;
+        }
+
+        &:has(span.padding[data-top-padding-desktop='none']),
+        &:has(span.padding[data-padding-top-desktop='none']) {
+            padding-top: 0;
+        }
+
+        &:has(span.padding[data-bottom-padding-desktop='none']),
+        &:has(span.padding[data-padding-bottom-desktop='none']) {
+            padding-bottom: 0;
+        }
+
+        &:has(span.padding[data-top-padding-mobile='double']),
+        &:has(span.padding[data-padding-top-mobile='double']) {
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                padding-top: $global_module_padding_double;
+            }
+        }
+
+        &:has(span.padding[data-bottom-padding-mobile='double']),
+        &:has(span.padding[data-padding-bottom-mobile='double']) {
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                padding-bottom: $global_module_padding_double;
+            }
+        }
+
+        &:has(span.padding[data-top-padding-mobile='single']),
+        &:has(span.padding[data-padding-top-mobile='single']) {
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                padding-top: $global_module_padding_single;
+            }
+        }
+
+        &:has(span.padding[data-bottom-padding-mobile='single']),
+        &:has(span.padding[data-padding-bottom-mobile='single']) {
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                padding-bottom: $global_module_padding_single;
+            }
+        }
+
+        &:has(span.padding[data-top-padding-mobile='none']),
+        &:has(span.padding[data-padding-top-mobile='none']) {
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                padding-top: 0;
+            }
+        }
+
+        &:has(span.padding[data-bottom-padding-mobile='none']),
+        &:has(span.padding[data-padding-bottom-mobile='none']) {
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                padding-bottom: 0;
+            }
+        }
+
+        // Restore the positioning context that the generic background system expects.
+        span.module-settings,
+        span.container-settings,
+        span.column-settings {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+
+            span.background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-repeat: no-repeat;
+
+                &[data-background-image-position='center'] {
+                    background-position: center;
+                    background-size: cover;
+                }
+
+                &[data-background-image-position='left'] {
+                    background-position: left;
+                }
+
+                &[data-background-image-position='right'] {
+                    background-position: right;
+                }
+
+                &[data-background-image-position='top'] {
+                    background-position: top;
+                    background-size: cover;
+                }
+
+                &[data-background-image-position='bottom'] {
+                    background-position: bottom;
+                    background-size: cover;
+                }
+
+                &[data-background-overlay='true']:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: var(--overlay-color);
+                }
+            }
+        }
+    }
+}

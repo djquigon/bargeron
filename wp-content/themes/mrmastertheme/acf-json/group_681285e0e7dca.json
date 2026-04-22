@@ -1,0 +1,107 @@
+{
+    "key": "group_681285e0e7dca",
+    "title": "Resource Fields",
+    "fields": [
+        {
+            "key": "field_6812864ec2c72",
+            "label": "Resource Type",
+            "name": "resource_type",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "File",
+            "ui_off_text": "Video",
+            "ui": 1
+        },
+        {
+            "key": "field_68128c3cc2c73",
+            "label": "File Upload",
+            "name": "file_upload",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6812864ec2c72",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_68128c69c2c74",
+            "label": "Video Link",
+            "name": "video_link",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "YouTube or Vimeo video links are allowed. Include the entire video link. For example: <br>\r\n<ul>\r\n<li>https:\/\/www.youtube.com\/watch?v=LiCiLb1J64E<\/li>\r\n<li>https:\/\/vimeo.com\/190544188<\/li>\r\n<\/ul>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6812864ec2c72",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "mandr_resource"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776266693
+}
