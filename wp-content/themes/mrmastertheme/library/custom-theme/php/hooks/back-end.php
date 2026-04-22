@@ -310,7 +310,7 @@ function mandr_resource_force_file_type_category($post_id)
     }
 
     //unhook this function so it doesn't loop infinitely
-    remove_action('save_post', 'set_object_terms');
+    remove_action('save_post', 'mandr_resource_force_file_type_category');
 
     //First, evaluate the resource type (Video/File) :
     if (get_field('resource_type', $post_id) === false) {
@@ -348,5 +348,89 @@ function mandr_resource_force_file_type_category($post_id)
     }
 
     //re-hook this function.
-    add_action('save_post', 'set_object_terms');
+    add_action('save_post', 'mandr_resource_force_file_type_category');
+}
+
+/**
+ * Local workaround for environments where the streamed admin-ajax image preview
+ * fails to render even though WordPress generates a valid image payload.
+ *
+ * Instead of streaming binary data directly from admin-ajax, create a temporary
+ * preview file in uploads and redirect the browser to that file URL.
+ */
+add_action('wp_ajax_imgedit-preview', 'mandr_redirect_imgedit_preview_to_file', 0);
+function mandr_redirect_imgedit_preview_to_file()
+{
+    if (!isset($_GET['postid'])) {
+        return;
+    }
+
+    $host = wp_parse_url(home_url(), PHP_URL_HOST);
+    if (!$host || !str_ends_with($host, '.local')) {
+        return;
+    }
+
+    $post_id = (int) $_GET['postid'];
+    if (empty($post_id) || !current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    check_ajax_referer("image_editor-$post_id");
+
+    require_once ABSPATH . 'wp-admin/includes/image-edit.php';
+
+    $image_path = _load_image_to_edit_path($post_id);
+    if (!$image_path) {
+        return;
+    }
+
+    $img = wp_get_image_editor($image_path);
+    if (is_wp_error($img)) {
+        return;
+    }
+
+    $changes = !empty($_REQUEST['history']) ? json_decode(wp_unslash($_REQUEST['history'])) : null;
+    if ($changes) {
+        $img = image_edit_apply_changes($img, $changes);
+        if (is_wp_error($img)) {
+            return;
+        }
+    }
+
+    $size = $img->get_size();
+    $w = $size['width'];
+    $h = $size['height'];
+    $ratio = _image_get_preview_ratio($w, $h);
+    $w2 = max(1, $w * $ratio);
+    $h2 = max(1, $h * $ratio);
+
+    if (is_wp_error($img->resize($w2, $h2))) {
+        return;
+    }
+
+    $uploads = wp_upload_dir();
+    if (!empty($uploads['error'])) {
+        return;
+    }
+
+    $preview_dir = trailingslashit($uploads['basedir']) . 'imgedit-preview-cache';
+    if (!wp_mkdir_p($preview_dir)) {
+        return;
+    }
+
+    $history = isset($_REQUEST['history']) ? wp_unslash($_REQUEST['history']) : '';
+    $version = md5($post_id . '|' . get_current_user_id() . '|' . $history . '|' . filemtime($image_path));
+    $filename = 'preview-' . $post_id . '-' . $version . '.png';
+    $filepath = trailingslashit($preview_dir) . $filename;
+
+    $saved = $img->save($filepath, 'image/png');
+    if (is_wp_error($saved) || empty($saved['path'])) {
+        return;
+    }
+
+    $file_url = trailingslashit($uploads['baseurl']) . 'imgedit-preview-cache/' . $filename;
+
+    nocache_headers();
+    wp_redirect(add_query_arg('ver', $version, $file_url));
+    exit;
 }

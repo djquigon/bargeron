@@ -104,11 +104,11 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 1,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1776266717
+    "modified": 1776817253
 }

@@ -976,11 +976,11 @@
     "hide_on_screen": [
         "the_content"
     ],
-    "active": true,
+    "active": false,
     "description": "",
     "show_in_rest": 1,
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1776266784
+    "modified": 1776817253
 }
