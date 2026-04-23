@@ -6,13 +6,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 
-<?php
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:ital,wght@0,300..700;1,300..700&family=Spline+Sans:wght@300..700&display=swap" rel="stylesheet">
+
+    <?php
     //Put your Favicon meta tags here (outside of the PHP delimeter):
-?>
+    ?>
 
-<?php
+    <?php
     //GTM Container Script pt 1.
     get_template_part('views/global/widgets/google-tag-manager/container-script-head');
 
@@ -20,11 +23,11 @@
     get_template_part('views/global/header/schema/schema');
 
     wp_head();
-?>
+    ?>
 </head>
 
 <body <?php body_class(); ?>>
-<?php
+    <?php
     //GTM Container Script pt 2.
     get_template_part('views/global/widgets/google-tag-manager/container-script-body');
     wp_body_open();
@@ -33,7 +36,7 @@
     if (is_front_page() && is_loading_animation_enabled()) {
         echo get_template_part('views/global/widgets/loading-animation/loading-animation');
     }
-?>
+    ?>
 
     <header id="header" class="header">
         <?php
@@ -50,29 +53,29 @@
 
 
         <?php
-            //If a secondary menu is created AND assigned to the appropriate menu location:
-            if (has_nav_menu('secondary_menu')) {
-                get_template_part('views/global/header/navigation/secondary-menu/secondary-menu');
-            }
+        //If a secondary menu is created AND assigned to the appropriate menu location:
+        if (has_nav_menu('secondary_menu')) {
+            get_template_part('views/global/header/navigation/secondary-menu/secondary-menu');
+        }
         ?>
 
         <?php
-            //You're always going to have a primary nav area that includes a site logo with a link to the homepage. 
-            //You'll find included in this file, the trigger for the toggled nav(s) (Mobile or Desktop)
-            //Move this stuff around as needed.
-            get_template_part('views/global/header/navigation/primary-menu/primary-menu');
+        //You're always going to have a primary nav area that includes a site logo with a link to the homepage. 
+        //You'll find included in this file, the trigger for the toggled nav(s) (Mobile or Desktop)
+        //Move this stuff around as needed.
+        get_template_part('views/global/header/navigation/primary-menu/primary-menu');
         ?>
 
         <?php
-            //We're almost always going to have a toggle nav. Mobile, desktop, or both.
-            get_template_part('views/global/header/navigation/toggled-menu/toggled-menu');
+        //We're almost always going to have a toggle nav. Mobile, desktop, or both.
+        get_template_part('views/global/header/navigation/toggled-menu/toggled-menu');
         ?>
 
         <?php
-            //If the Popup post type is activated, include our Popup widget here:
-            if (post_type_exists('mandr_popup')) {
-                get_template_part('views/global/widgets/popup/popup');
-            }
+        //If the Popup post type is activated, include our Popup widget here:
+        if (post_type_exists('mandr_popup')) {
+            get_template_part('views/global/widgets/popup/popup');
+        }
         ?>
     </header>
     <?php

@@ -4,6 +4,10 @@ input[type='button'],
 input[type='reset'],
 input[type='submit'],
 .button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: auto;
     cursor: pointer;
     background-color: transparent;
@@ -13,20 +17,72 @@ input[type='submit'],
     margin: 0;
     padding: 0;
     transform-style: preserve-3d;
+    background: linear-gradient(90deg, #0b005c 6.29%, #1700c2 86.36%);
+    color: $color_white;
+    padding: 16px 32px;
+    padding-right: 110px;
+    border-radius: 33.5px;
+    text-decoration: none;
+    height: 67px;
+    text-decoration: none;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        // transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    &::before {
+        right: 6px;
+        width: 53px;
+        height: 53px;
+        border-radius: 50%;
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow.svg)
+            no-repeat center center;
+        background-size: contain;
+        z-index: 1;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &::after {
+        background: white;
+        width: 69px;
+        height: 69px;
+        border-radius: 50%;
+        top: -1px;
+        right: -1px;
+    }
 
     &:hover,
     &:focus {
-        //
+        background: $color_blue_dark;
+        text-decoration: none;
+        &::before {
+            transform: translateY(-50%) rotate(46deg);
+            filter: brightness(0.5);
+        }
     }
 }
 
 .button {
     display: inline-block;
+    .text-wrap {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
 
     &--clear {
         background: transparent;
         border: none;
         padding: 0;
+    }
+
+    &--alt {
     }
 }
 
@@ -67,5 +123,15 @@ input[type='reset'],
 input[type='submit'],
 textarea:focus,
 .button {
-    transition: color 0.3s ease-in-out, background 0.3s ease-in-out;
+    transition:
+        color 0.3s ease-in-out,
+        background 0.3s ease-in-out;
+
+    &::before,
+    &::after {
+        transition:
+            transform 0.3s ease-in-out,
+            background 0.3s ease-in-out,
+            border-color 0.3s ease-in-out;
+    }
 }

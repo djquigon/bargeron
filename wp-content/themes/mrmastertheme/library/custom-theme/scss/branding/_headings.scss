@@ -25,13 +25,17 @@ h6,
 
 h1,
 .h1 {
+    color: $color_blue_dark;
+    font-family: 'Spline Sans';
     font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
 
     @media (min-width: $breakpoint_before_mobile_large) {
         font-size: 42px;
     }
     @media (min-width: $breakpoint_tablet_medium_portrait) {
-        font-size: 54px;
+        font-size: 52px;
     }
 
     //set spacing between bottom of our heading and top of next sibling node:
@@ -62,13 +66,17 @@ h1,
 
 h2,
 .h2 {
-    font-size: 26px;
+    color: $color_blue_dark;
+    font-family: 'Spline Sans';
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
 
     @media (min-width: $breakpoint_before_mobile_large) {
-        font-size: 32px;
+        font-size: 36px;
     }
     @media (min-width: $breakpoint_tablet_medium_portrait) {
-        font-size: 40px;
+        font-size: 42px;
     }
 
     //set spacing between bottom of our heading and top of next sibling node:
@@ -99,10 +107,14 @@ h2,
 
 h3,
 .h3 {
-    font-size: 22px;
+    color: $color_blue_dark;
+    font-family: 'Spline Sans';
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
 
     @media (min-width: $breakpoint_before_mobile_large) {
-        font-size: 25px;
+        font-size: 32px;
     }
 
     //set spacing between bottom of our heading and top of next sibling node:
@@ -133,7 +145,14 @@ h3,
 
 h4,
 .h4 {
-    font-size: 20px;
+    font-family: 'Spline Sans';
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+
+    @media (min-width: $breakpoint_before_mobile_large) {
+        font-size: 26px;
+    }
 
     //set spacing between bottom of our heading and top of next sibling node:
     + p,
@@ -163,7 +182,15 @@ h4,
 
 h5,
 .h5 {
-    font-size: 18px;
+    font-family: 'Spline Sans';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.69px;
+
+    @media (min-width: $breakpoint_before_mobile_large) {
+        font-size: 23px;
+    }
 
     //set spacing between bottom of our heading and top of next sibling node:
     + p,
@@ -193,7 +220,16 @@ h5,
 
 h6,
 .h6 {
-    font-size: 16px;
+    font-family: 'Spline Sans Mono';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 4.6px;
+    text-transform: uppercase;
+
+    @media (min-width: $breakpoint_before_mobile_large) {
+        font-size: 23px;
+    }
 
     //set spacing between bottom of our heading and top of next sibling node:
     + p,
