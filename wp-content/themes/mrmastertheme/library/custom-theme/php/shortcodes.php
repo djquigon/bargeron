@@ -4,7 +4,8 @@
 
 //Button:
 add_shortcode('button', 'button_shortcode');
-function button_shortcode($atts, $content = null) {
+function button_shortcode($atts, $content = null)
+{
 
 	extract(shortcode_atts(
 		array(
@@ -13,10 +14,17 @@ function button_shortcode($atts, $content = null) {
 			'mobile_text' => '',
 			'newtab' => 'false',
 			//'align' => 'false',
-			'download' => 'false'
+			'download' => 'false',
+			'style' => 'default'
 		),
 		$atts
 	));
+
+	if ($style === 'alt') {
+		$style = 'button--alt';
+	} else {
+		$style = '';
+	}
 
 	$output = '';
 
@@ -55,7 +63,7 @@ function button_shortcode($atts, $content = null) {
 	}
 
 	//$output .= $p_align;
-	$output .=  '<a ' . $download . ' href="' . $link . '" title="' . $text . '" class="button"' . $insert . $rel . '>';
+	$output .=  '<a ' . $download . ' href="' . $link . '" title="' . $text . '" class="button ' . $style . '"' . $insert . $rel . '>';
 	$output .= $mobile;
 	$output .= '<span class="text-wrap">' . $text . '</span>';
 	$output .= '</a>';
@@ -73,7 +81,8 @@ function button_shortcode($atts, $content = null) {
 
 //Contact Phone
 add_shortcode('contact-phone', 'phone_link_sc');
-function phone_link_sc($atts, $content = null) {
+function phone_link_sc($atts, $content = null)
+{
 	$phone = get_field('contact_info_phone', 'options');
 
 	if ($phone) :
@@ -87,7 +96,8 @@ function phone_link_sc($atts, $content = null) {
 
 //Contact Email 
 add_shortcode('contact-email', 'contact_email_sc');
-function contact_email_sc($atts, $content = null) {
+function contact_email_sc($atts, $content = null)
+{
 	$email = antispambot(get_field('contact_info_email', 'options'));
 
 	if ($email) :
@@ -101,7 +111,8 @@ function contact_email_sc($atts, $content = null) {
 
 //Contact Address
 add_shortcode('contact-address', 'contact_address_sc');
-function contact_address_sc($atts, $content = null) {
+function contact_address_sc($atts, $content = null)
+{
 	$location_text = get_field('contact_info_address_text', 'options');
 	$location_link = get_field('contact_info_address_link', 'options');
 
@@ -116,7 +127,8 @@ function contact_address_sc($atts, $content = null) {
 
 //Email (for email addresses other than what's in Options tab)
 add_shortcode('email', 'email_shortcode');
-function email_shortcode($atts, $content = null) {
+function email_shortcode($atts, $content = null)
+{
 
 	extract(shortcode_atts(
 		array(
@@ -143,7 +155,8 @@ function email_shortcode($atts, $content = null) {
 
 //Facebook Icon
 add_shortcode('facebook-icon', 'facebook_icon_sc');
-function facebook_icon_sc($atts, $content = null) {
+function facebook_icon_sc($atts, $content = null)
+{
 
 	$facebook_link = get_field('social_facebook', 'options');
 	$output = '<a href="' . $facebook_link . '">Facebook</a>';
@@ -162,13 +175,15 @@ function facebook_icon_sc($atts, $content = null) {
 
 //Current Year
 add_shortcode('current-year', 'current_year_shortcode');
-function current_year_shortcode($atts, $content = null) {
+function current_year_shortcode($atts, $content = null)
+{
 	return date("Y");
 }
 
 //Site Name
 add_shortcode('site-name', 'site_name_shortcode');
-function site_name_shortcode($atts, $content = null) {
+function site_name_shortcode($atts, $content = null)
+{
 	return get_bloginfo('name');
 }
 
@@ -176,7 +191,8 @@ function site_name_shortcode($atts, $content = null) {
 
 //Client Name
 add_shortcode('client-name', 'client_name_sc');
-function client_name_sc($atts, $content = null) {
+function client_name_sc($atts, $content = null)
+{
 	$output = get_field('privacy_policy_client_name', 'options');
 
 	return $output;
@@ -184,7 +200,8 @@ function client_name_sc($atts, $content = null) {
 
 //Client Website
 add_shortcode('client-website', 'client_website_sc');
-function client_website_sc($atts, $content = null) {
+function client_website_sc($atts, $content = null)
+{
 	$website = get_field('privacy_policy_client_website', 'options');
 	ob_start();
 ?>
@@ -196,7 +213,8 @@ function client_website_sc($atts, $content = null) {
 
 //Client Contact Email
 add_shortcode('client-contact-email', 'client_contact_email_sc');
-function client_contact_email_sc($atts, $content = null) {
+function client_contact_email_sc($atts, $content = null)
+{
 	$email = get_field('privacy_policy_client_email', 'options');
 	ob_start();
 ?>
@@ -210,13 +228,15 @@ function client_contact_email_sc($atts, $content = null) {
 add_shortcode('line-break', 'mandr_line_break_shortcode');
 add_shortcode('br', 'mandr_line_break_shortcode');
 add_shortcode('spacer', 'mandr_line_break_shortcode');
-function mandr_line_break_shortcode($atts, $content = null) {
-    return '<br>';
+function mandr_line_break_shortcode($atts, $content = null)
+{
+	return '<br>';
 }
 
 //Toggle (NEEDS WORK, MAY REMOVE)
 //add_shortcode('toggle', 'toggle_shortcode');
-function toggle_shortcode($atts, $content = null) {
+function toggle_shortcode($atts, $content = null)
+{
 
 	extract(shortcode_atts(
 		array(
