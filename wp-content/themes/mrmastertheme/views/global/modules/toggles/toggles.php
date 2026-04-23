@@ -1,21 +1,23 @@
 <?php
     $tag_type = get_sub_field('tag_type');
+    $layout = get_sub_field('layout');
+    $container_width = get_sub_field('container_width');
 
     $unique_identifiers = get_sub_field('unique_identifiers');
     $module_id = $unique_identifiers['id'] ?? '';
     $module_class_names = $unique_identifiers['class_names'] ?? '';
 
-    if ($module_id && $module_class_names) {
-        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="testimonials ' . $module_class_names . '" data-layout="columns">';
-    } elseif ($module_id && !$module_class_names) {
-        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="testimonials" data-layout="columns">';
-    } elseif (!$module_id && $module_class_names) {
-        $opening_tag = '<' . $tag_type . ' class="testimonials ' . $module_class_names . '" data-layout="columns">';
-    } else {
-        $opening_tag = '<' . $tag_type . ' class="testimonials" data-layout="columns">';
-    }
-
     $closing_tag = '</' . $tag_type . '>';
+
+    if ($module_id && $module_class_names) {
+        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="toggles ' . $module_class_names . '" data-layout="' . $layout . '">';
+    } elseif ($module_id && !$module_class_names) {
+        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="toggles" data-layout="' . $layout . '">';
+    } elseif (!$module_id && $module_class_names) {
+        $opening_tag = '<' . $tag_type . ' class="toggles ' . $module_class_names . '" data-layout="' . $layout . '">';
+    } else {
+        $opening_tag = '<' . $tag_type . ' class="toggles" data-layout="' . $layout . '">';
+    }
 
     $padding_settings = get_sub_field('padding');
     $top_padding_desktop = $padding_settings['top_padding_desktop'] ?? '';
@@ -72,30 +74,66 @@
         $text_color_attribute = '';
     }
 
-    $module_title = get_sub_field('module_title');
-    $include_intro_content = (bool) get_sub_field('include_intro_content');
     $intro_content = get_sub_field('intro_content');
-    $testimonials = get_sub_field('testimonials');
-
-    $template_args = array(
-        'module_title' => $module_title,
-        'include_intro_content' => $include_intro_content,
-        'intro_content' => $intro_content,
-        'testimonials' => $testimonials,
-        'text_color_attribute' => $text_color_attribute,
-    );
+    $toggles = get_sub_field('toggles');
 ?>
 
 <?php
-    if ($testimonials) :
+    if ($toggles) :
         echo $opening_tag;
-        get_template_part('views/global/modules/testimonials/layout-options/columns', null, $template_args);
 ?>
-            <span class="module-settings">
-                <?= $padding_settings_tag ?>
-                <?= $background_settings_tag ?>
-                <span class="validator-text">module settings</span>
-            </span>
+        <?php if ($intro_content) : ?>
+            <div class="intro-content-row">
+                <div class="container" <?= $text_color_attribute ?>>
+                    <?= $intro_content ?>
+                    <span
+                        class="container-settings"
+                        data-container-width="<?= $container_width ?>">
+                        <span class="validator-text" data-nosnippet>settings</span>
+                    </span>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="toggles-row">
+            <div class="container" <?= $text_color_attribute ?>>
+                <dl class="toggles-list">
+                    <?php
+                    $random_integer = rand(0, 999);
+                    $toggle_count = 0;
+                    foreach ($toggles as $row) {
+                        $title = $row['title'] ?? '';
+                        $content = $row['content'] ?? '';
+                        $image = $row['image'] ?? null;
+                        $aria_controls_value = 'toggle-' . $random_integer . '-' . $toggle_count;
+
+                        $answer = $content;
+                        if (!empty($image['url'])) {
+                            $answer .= '<figure class="toggle-image"><img src="' . esc_url($image['url']) . '" alt="' . esc_attr($image['alt'] ?? '') . '" loading="lazy" decoding="async" /></figure>';
+                        }
+
+                        $template_args = array(
+                            'question' => $title,
+                            'answer' => $answer,
+                            'aria_controls_value' => $aria_controls_value,
+                        );
+
+                        get_template_part('views/global/widgets/toggles/toggle', null, $template_args);
+                        $toggle_count++;
+                    }
+                    ?>
+                </dl>
+                <span
+                    class="container-settings"
+                    data-container-width="<?= $container_width ?>">
+                    <span class="validator-text" data-nosnippet>settings</span>
+                </span>
+            </div>
+        </div>
+        <span class="module-settings" data-nosnippet>
+            <?= $padding_settings_tag ?>
+            <?= $background_settings_tag ?>
+            <span class="validator-text">module settings</span>
+        </span>
 <?php
         echo $closing_tag;
     endif;

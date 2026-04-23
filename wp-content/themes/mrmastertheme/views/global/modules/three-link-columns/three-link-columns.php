@@ -1,21 +1,22 @@
 <?php
     $tag_type = get_sub_field('tag_type');
+    $container_width = get_sub_field('container_width');
 
     $unique_identifiers = get_sub_field('unique_identifiers');
     $module_id = $unique_identifiers['id'] ?? '';
     $module_class_names = $unique_identifiers['class_names'] ?? '';
 
-    if ($module_id && $module_class_names) {
-        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="testimonials ' . $module_class_names . '" data-layout="columns">';
-    } elseif ($module_id && !$module_class_names) {
-        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="testimonials" data-layout="columns">';
-    } elseif (!$module_id && $module_class_names) {
-        $opening_tag = '<' . $tag_type . ' class="testimonials ' . $module_class_names . '" data-layout="columns">';
-    } else {
-        $opening_tag = '<' . $tag_type . ' class="testimonials" data-layout="columns">';
-    }
-
     $closing_tag = '</' . $tag_type . '>';
+
+    if ($module_id && $module_class_names) {
+        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="three-link-columns ' . $module_class_names . '">';
+    } elseif ($module_id && !$module_class_names) {
+        $opening_tag = '<' . $tag_type . ' id="' . $module_id . '" class="three-link-columns">';
+    } elseif (!$module_id && $module_class_names) {
+        $opening_tag = '<' . $tag_type . ' class="three-link-columns ' . $module_class_names . '">';
+    } else {
+        $opening_tag = '<' . $tag_type . ' class="three-link-columns">';
+    }
 
     $padding_settings = get_sub_field('padding');
     $top_padding_desktop = $padding_settings['top_padding_desktop'] ?? '';
@@ -75,27 +76,80 @@
     $module_title = get_sub_field('module_title');
     $include_intro_content = (bool) get_sub_field('include_intro_content');
     $intro_content = get_sub_field('intro_content');
-    $testimonials = get_sub_field('testimonials');
-
-    $template_args = array(
-        'module_title' => $module_title,
-        'include_intro_content' => $include_intro_content,
-        'intro_content' => $intro_content,
-        'testimonials' => $testimonials,
-        'text_color_attribute' => $text_color_attribute,
-    );
+    $columns = get_sub_field('columns');
 ?>
 
 <?php
-    if ($testimonials) :
+    if ($columns) :
         echo $opening_tag;
-        get_template_part('views/global/modules/testimonials/layout-options/columns', null, $template_args);
 ?>
-            <span class="module-settings">
-                <?= $padding_settings_tag ?>
-                <?= $background_settings_tag ?>
-                <span class="validator-text">module settings</span>
+        <?php if ($module_title || ($include_intro_content && $intro_content)) : ?>
+            <div class="intro-content-row">
+                <div class="container" <?= $text_color_attribute ?>>
+                    <?php if ($module_title) : ?>
+                        <h2 class="module-title"><?= $module_title ?></h2>
+                    <?php endif; ?>
+                    <?php if ($include_intro_content && $intro_content) : ?>
+                        <div class="intro-content">
+                            <?= $intro_content ?>
+                        </div>
+                    <?php endif; ?>
+                    <span
+                        class="container-settings"
+                        data-container-width="<?= $container_width ?>">
+                        <span class="validator-text" data-nosnippet>settings</span>
+                    </span>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div class="columns-row">
+            <div class="columns" <?= $text_color_attribute ?>>
+                <?php
+                foreach ($columns as $column) {
+                    $content = $column['content'] ?? '';
+                    $bg = $column['background_image'] ?? null;
+                    $link = $column['link'] ?? '';
+
+                    if (is_array($link)) {
+                        $link_url = $link['url'] ?? '';
+                    } else {
+                        $link_url = $link;
+                    }
+
+                    $style = '';
+                    if (!empty($bg['url'])) {
+                        $style = ' style="--column-background-image: url(' . esc_url($bg['url']) . ');"';
+                    }
+                    ?>
+                    <div class="column"<?= $style ?>>
+                        <?php if ($link_url) : ?>
+                            <a class="column-link" href="<?= esc_url($link_url) ?>">
+                        <?php endif; ?>
+                        <div class="column-inner">
+                            <?php if (!empty($bg['url'])) : ?>
+                                <span class="column-background" aria-hidden="true"></span>
+                            <?php endif; ?>
+                            <div class="content">
+                                <?= $content ?>
+                            </div>
+                        </div>
+                        <?php if ($link_url) : ?>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php } ?>
+            </div>
+            <span
+                class="row-settings"
+                data-container-width="<?= $container_width ?>">
+                <span class="validator-text" data-nosnippet>settings</span>
             </span>
+        </div>
+        <span class="module-settings" data-nosnippet>
+            <?= $padding_settings_tag ?>
+            <?= $background_settings_tag ?>
+            <span class="validator-text">module settings</span>
+        </span>
 <?php
         echo $closing_tag;
     endif;

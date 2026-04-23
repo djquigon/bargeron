@@ -73,7 +73,7 @@ if (!empty($team_by_department)) :
                 <?php if (!empty($members)) : ?>
                     <ul class="team-members-grid" data-grid="grid" data-column-count="three" data-column-gap="small" data-row-gap="small">
                         <?php foreach ($members as $member) :
-                            echo get_template_part('views/global/modules/team-members/components/team-member', null, array(
+                            get_template_part('views/conditional/team/archive/modules/team-members/components/team-member', null, array(
                                 'member' => $member,
                                 'display_type' => 'card',
                                 'bio_options' => $bio_options,

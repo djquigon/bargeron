@@ -102,9 +102,8 @@
                             while ($post_query->have_posts()) : $post_query->the_post();
                         ?>
                                 <div class="column">
-                                    <?php 
-                                        //because this same card layout is used for posts but by different modules, we opt to put the template file in the more global folder
-                                        echo get_template_part('views/global/modules/blog-post-list/components/card-standard', null, array('id' => get_the_ID())); 
+                                    <?php
+                                    get_template_part('views/conditional/posts/single/modules/similar-articles/components/card-standard', null, array('id' => get_the_ID()));
                                     ?>
                                 </div>
                         <?php

@@ -6,7 +6,7 @@
 
     //If there are images/video in the gallery, then display that module:
     if (get_field('media_gallery')) {
-        echo get_template_part('views/global/modules/media-gallery/media-gallery', null, array('media_gallery' => get_field('media_gallery'), 'layout' => 'masonry'));
+        echo get_template_part('views/global/components/media-gallery/media-gallery', null, array('media_gallery' => get_field('media_gallery'), 'layout' => 'masonry'));
     }
 
     //spit out all the individual page sections (modules)

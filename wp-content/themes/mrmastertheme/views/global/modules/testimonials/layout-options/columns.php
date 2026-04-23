@@ -1,20 +1,12 @@
 <?php
-//first we set up the arguments passed from the testimonial module's main php file:
 $module_title = $args['module_title'];
+$include_intro_content = $args['include_intro_content'];
 $intro_content = $args['intro_content'];
-
 $testimonials = $args['testimonials'];
-
 $text_color_attribute = $args['text_color_attribute'];
 
-$column_count = $args['column_count'];
-
-$all_testimonials_button = $args['all_testimonials_button'];
-$all_testimonials_button_text = $all_testimonials_button['button_text'];
-$all_testimonials_button_link = $all_testimonials_button['button_link'];
-
-if ($module_title || $intro_content) :
-?>
+if ($module_title || ($include_intro_content && $intro_content)) :
+    ?>
     <div class="intro-content-row">
         <div class="container" <?= $text_color_attribute ?>>
             <?php
@@ -23,7 +15,7 @@ if ($module_title || $intro_content) :
             }
             ?>
             <?php
-            if ($intro_content) {
+            if ($include_intro_content && $intro_content) {
                 echo $intro_content;
             }
             ?>
@@ -44,7 +36,7 @@ endif;
             $testimonial_content = $testimonial['testimonial'];
             $testimonial_author_name = $testimonial['author_name'];
             $testimonial_author_title = $testimonial['author_title'];
-        ?>
+            ?>
             <div class="testimonial column" <?= $text_color_attribute ?>>
                 <div class="content">
                     <?= $testimonial_content ?>
@@ -53,7 +45,7 @@ endif;
                     <span class="name"><?= $testimonial_author_name ?></span>
                     <?php
                     if ($testimonial_author_title) :
-                    ?>
+                        ?>
                         <span class="title"><?= $testimonial_author_title ?></span>
                     <?php
                     endif;
@@ -66,25 +58,7 @@ endif;
     </div>
     <span
         class="row-settings"
-        data-container-width="standard"
-        data-column-count="<?= $column_count ?>">
+        data-container-width="standard">
         <span class="validator-text" data-nosnippet>settings</span>
     </span>
 </div>
-<?php
-if ($all_testimonials_button_text && $all_testimonials_button_link) :
-?>
-    <div class="all-button-row">
-        <div class="container">
-            <a href="<?= $all_testimonials_button_link ?>" class="button"><?= $all_testimonials_button_text ?></a>
-            <span
-                class="container-settings"
-                data-container-width="standard"
-                data-text-align="center">
-                <span class="validator-text" data-nosnippet>settings</span>
-            </span>
-        </div>
-    </div>
-<?php
-endif;
-?>

@@ -31,6 +31,9 @@
 //import global modules scss:
 @import 'views/global/modules/exports';
 
+// CPT singles & shared: media gallery (not a flexible ACF "module" layout)
+@import 'views/global/components/media-gallery/assets/scss/media-gallery';
+
 //import global widgets scss:
 @import 'views/global/widgets/exports';
 
