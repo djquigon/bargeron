@@ -87,7 +87,7 @@ $has_images = !empty($large_image['url']) || !empty($small_image['url']);
 if ($has_text || $has_images) :
     echo $opening_tag;
 ?>
-    <div class="container" data-flex="flex" data-column-count="two" data-column-gap="large" data-row-gap="small">
+    <div class="container">
         <div class="text-column" <?= $text_color_attribute ?>>
             <?php if ($sub_heading) : ?>
                 <h6 class="sub-heading"><?= esc_html($sub_heading) ?></h6>

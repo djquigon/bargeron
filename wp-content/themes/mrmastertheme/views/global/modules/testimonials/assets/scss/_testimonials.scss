@@ -1,19 +1,114 @@
 section.testimonials,
 aside.testimonials,
 div.testimonials {
-    //
-
     &[data-layout='columns'] {
+        overflow: hidden;
+
+        div.testimonials-row {
+            width: 1935px;
+            position: relative;
+            margin-left: 18.5%;
+            padding: $global_module_padding_double 0;
+            &::before {
+                content: '';
+                display: block;
+                width: 60%;
+                height: 100%;
+                border-radius: 0 29px 29px 0;
+                background: linear-gradient(
+                    325deg,
+                    #1700c2 14.1%,
+                    #08007d 62.48%,
+                    #0a005c 91.39%
+                );
+                box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.23);
+                position: absolute;
+                top: 50%;
+                left: -23%;
+                transform: translateY(-50%) skewX(-20deg);
+                transform-origin: top left;
+            }
+
+            div.testimonials-slider {
+                margin-left: 0;
+                margin-right: 0;
+                width: 1935px;
+            }
+
+            div.testimonials-slider-arrows {
+                position: absolute;
+                margin-top: 32px;
+
+                button.slick-arrow {
+                    width: 55px;
+                    height: 55px;
+
+                    &:before {
+                        content: '';
+                        display: block;
+                        width: 55px;
+                        height: 55px;
+                        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow.svg)
+                            no-repeat center center;
+                        background-size: contain;
+                        border-radius: 50%;
+                        filter: brightness(0.5);
+                    }
+
+                    &.slick-prev:before {
+                        transform: rotate(133deg) scaleY(-1);
+                    }
+
+                    &.slick-next:before {
+                        transform: rotate(46deg);
+                    }
+
+                    &:hover,
+                    &:focus {
+                        &:before {
+                            filter: brightness(1);
+                        }
+                    }
+                }
+
+                @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+                    display: none;
+                }
+            }
+        }
+
         div.testimonial {
-            //
+            display: flex !important;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            min-height: 200px;
+            padding: 70px 42px;
+            background-color: $color_white;
+            border-radius: 20px;
+            // box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
 
             div.content {
-                //
+                margin-bottom: 20px;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 184px;
+                    height: 25px;
+                    background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/google-review.svg)
+                        no-repeat center center;
+                    background-size: contain;
+                    margin-top: 15px;
+                }
             }
 
             div.author {
-                font-weight: 700;
+                color: #012153;
+                font-size: 15px;
                 font-style: italic;
+                font-weight: 700;
+                line-height: normal;
 
                 span.title {
                     position: relative;

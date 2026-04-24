@@ -2,6 +2,64 @@ section.content-two-images,
 aside.content-two-images,
 div.content-two-images {
     //
+    &[data-layout='image-right'] {
+        .container {
+            display: flex;
+            column-gap: $global_gap_between_columns_large;
+            row-gap: $global_gap_between_rows_small;
+            div.images-column {
+                width: calc(50% - calc($global_gap_between_columns_large / 2));
+                position: relative;
+
+                .image {
+                    &--large {
+                        //
+                        padding-bottom: 90px;
+                        padding-left: 80px;
+                    }
+
+                    &--small {
+                        //
+                        bottom: 0;
+                        left: 0;
+                    }
+                }
+            }
+            div.text-column {
+                width: calc(50% - calc($global_gap_between_columns_large / 2));
+            }
+        }
+    }
+
+    &[data-layout='image-left'] {
+        .container {
+            display: flex;
+            flex-direction: row-reverse;
+            column-gap: $global_gap_between_columns_large;
+            row-gap: $global_gap_between_rows_small;
+            div.images-column {
+                width: calc(50% - calc($global_gap_between_columns_large / 2));
+                position: relative;
+
+                .image {
+                    &--large {
+                        //
+                        padding-bottom: 90px;
+                        padding-right: 80px;
+                    }
+
+                    &--small {
+                        //
+                        bottom: 0;
+                        right: 0;
+                    }
+                }
+            }
+            div.text-column {
+                width: calc(50% - calc($global_gap_between_columns_large / 2));
+            }
+        }
+    }
 
     div.container {
         div.text-column {
@@ -18,8 +76,6 @@ div.content-two-images {
                 }
                 &--large {
                     //
-                    padding-bottom: 90px;
-                    padding-left: 80px;
                     img {
                         width: 100%;
                         height: 100%;
@@ -29,8 +85,6 @@ div.content-two-images {
                 &--small {
                     //
                     position: absolute;
-                    bottom: 0;
-                    left: 0;
                     height: 270px;
                     width: 350px;
                     img {
