@@ -7,10 +7,15 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
+    overflow-x: hidden;
 
     @media (min-width: $breakpoint_before_mobile_large) {
         font-size: 22px;
     }
+}
+
+#main {
+    overflow-x: hidden;
 }
 
 a {

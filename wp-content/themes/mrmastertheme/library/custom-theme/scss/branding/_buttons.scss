@@ -1,74 +1,41 @@
-button.button,
-button.content-limiter-expander,
-input[type='button'],
-input[type='reset'],
-input[type='submit'],
 .button {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: auto;
-    cursor: pointer;
-    background-color: $color_blue_dark;
-    border: none;
-    border-radius: none;
-    box-shadow: none;
-    margin: 0;
-    padding: 0;
-    transform-style: preserve-3d;
-    background-image: linear-gradient(90deg, #0b005c 6.29%, #1700c2 86.36%);
-    background-position: left center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    color: $color_white;
-    padding: 16px 32px;
-    padding-right: 95px;
-    border-radius: 33.5px;
-    text-decoration: none;
     height: 67px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 33.5px;
+    color: $color_white;
     text-decoration: none;
-    font-style: normal;
-    font-weight: 600;
-    letter-spacing: 0.66px;
-
-    &::before,
-    &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        // transform: translateY(-50%);
-        pointer-events: none;
-    }
 
     &::before {
+        content: '';
+        position: absolute;
         right: 6px;
+        top: 50%;
+        transform: translateY(-50%);
         width: 53px;
         height: 53px;
         border-radius: 50%;
         background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow.svg)
             no-repeat center center;
         background-size: contain;
-        z-index: 1;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    &::after {
-        background: white;
-        width: 69px;
-        height: 69px;
-        border-radius: 50%;
-        top: -1px;
-        right: -1px;
+        z-index: 2;
+        pointer-events: none;
     }
 
     &:hover,
     &:focus {
-        background-color: $color_blue_dark;
-        background-position: right center;
-        background-size: 0% 100%;
         text-decoration: none;
+
+        .text-wrap {
+            background-position: right center;
+            background-size: 0% 100%;
+        }
+
         &::before {
             transform: translateY(-50%) rotate(46deg);
             filter: brightness(0.5);
@@ -76,40 +43,77 @@ input[type='submit'],
     }
 }
 
-.button {
-    display: inline-block;
+.button .text-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 67px;
+    padding: 16px 95px 16px 32px;
+    border-radius: 33.5px;
+
+    color: $color_white;
+
+    font-family: 'Spline Sans';
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.66px;
+
+    background-color: $color_blue_dark;
+    background-image: linear-gradient(90deg, #0b005c 6.29%, #1700c2 86.36%);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    -webkit-mask-image: radial-gradient(
+        circle 35px at calc(100% - 33px) 50%,
+        transparent 0 34px,
+        black 35px
+    );
+    mask-image: radial-gradient(
+        circle 35px at calc(100% - 33px) 50%,
+        transparent 0 34px,
+        black 35px
+    );
+}
+
+.button--alt {
+    height: unset !important;
     .text-wrap {
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
-
-    &--clear {
+        height: unset !important;
+        line-height: 1;
         background: transparent;
-        border: none;
         padding: 0;
-    }
-
-    &--alt {
-        background: $color_yellow;
         color: $color_blue_dark;
-
+        padding-right: 35px;
+        padding-bottom: 8px;
+        font-family: 'Spline Sans';
+        font-size: 23px;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 0.69px;
+        mask-image: unset !important;
+        text-decoration: none;
+        border-bottom-color: transparent;
+        border-radius: 0 !important;
+    }
+    &::before {
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-2.svg)
+            no-repeat center center;
+        background-size: contain;
+        width: 25px;
+        height: 25px;
+        transform: unset;
+        top: 0 !important;
+        right: 0 !important;
+    }
+    &:hover,
+    &:focus {
+        .text-wrap {
+            border-bottom: 3px solid $color_blue_dark;
+        }
         &::before {
-            background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-alt.svg)
-                no-repeat center center;
-            background-size: contain;
-        }
-
-        &::after {
-            background: $color_blue;
-        }
-
-        &:hover,
-        &:focus {
-            background: $color_yellow_dark;
-            &::before {
-                filter: brightness(1);
-            }
+            transform: rotate(46deg);
         }
     }
 }

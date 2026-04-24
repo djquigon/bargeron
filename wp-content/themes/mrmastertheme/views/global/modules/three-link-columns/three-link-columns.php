@@ -103,7 +103,7 @@ if ($columns) :
         </div>
     <?php endif; ?>
     <div class="columns-row">
-        <div class="columns" <?= $text_color_attribute ?>>
+        <div class="columns" data-flex="flex" data-column-count="three" data-column-gap="none" <?= $text_color_attribute ?>>
             <?php
             foreach ($columns as $column) {
                 $content = $column['content'] ?? '';

@@ -2,8 +2,22 @@ section.three-link-columns,
 aside.three-link-columns,
 div.three-link-columns {
     //
+    background: linear-gradient(
+        180deg,
+        #e2e2e2 36.99%,
+        rgba(255, 255, 255, 0) 102.73%
+    );
 
     div.columns {
         //
+        gap: 5px;
+
+        .column {
+            background: var(--column-background-image);
+            padding: 120px 75px;
+            padding-bottom: 440px;
+            border-radius: 25px;
+            width: calc(33.33% - 5px);
+        }
     }
 }

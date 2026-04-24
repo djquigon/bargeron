@@ -2,4 +2,43 @@
 .bolt-top-left,
 .bolt-bottom-right,
 .bolt-bottom-left {
+    position: relative;
+    &::after {
+        content: '';
+        position: absolute;
+        width: 1993px;
+        height: 590px;
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/bolt.png)
+            no-repeat center center;
+        background-size: contain;
+        z-index: -1;
+    }
+}
+
+.bolt-top-right {
+    &::after {
+        top: 25px;
+        right: -700px;
+    }
+}
+
+.bolt-top-left {
+    &::after {
+        top: 25px;
+        left: -700px;
+    }
+}
+
+.bolt-bottom-right {
+    &::after {
+        bottom: 25px;
+        right: -700px;
+    }
+}
+
+.bolt-bottom-left {
+    &::after {
+        bottom: 25px;
+        left: -700px;
+    }
 }

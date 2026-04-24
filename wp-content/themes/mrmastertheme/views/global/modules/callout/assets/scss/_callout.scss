@@ -21,5 +21,28 @@ div.callout {
         p {
             color: $color_white;
         }
+        .button {
+            .text-wrap {
+                background: $color_yellow !important;
+                color: $color_blue_dark !important;
+            }
+
+            &::before {
+                background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-alt.svg)
+                    no-repeat center center !important;
+                background-size: contain !important;
+            }
+
+            &:hover,
+            &:focus {
+                .text-wrap {
+                    background: $color_yellow_dark !important;
+                }
+
+                &::before {
+                    filter: brightness(1) !important;
+                }
+            }
+        }
     }
 }

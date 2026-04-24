@@ -3,7 +3,42 @@ aside.content-two-images,
 div.content-two-images {
     //
 
-    div.inner {
-        //
+    div.container {
+        div.text-column {
+        }
+
+        div.images-column {
+            position: relative;
+
+            .image {
+                img {
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 29px;
+                }
+                &--large {
+                    //
+                    padding-bottom: 90px;
+                    padding-left: 80px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                &--small {
+                    //
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 270px;
+                    width: 350px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
     }
 }
