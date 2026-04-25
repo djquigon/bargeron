@@ -1,9 +1,172 @@
 section.toggles,
 aside.toggles,
 div.toggles {
-    //
+    padding-top: 175px !important;
+    padding-bottom: calc($global_module_padding_double + 80px) !important;
+    &[data-layout='images'] {
+        .container {
+            width: 1470px;
+        }
 
-    dl.toggles-list {
-        //
+        .toggles-row {
+            margin-top: 80px;
+        }
+        div.toggles-images-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            column-gap: $global_gap_between_columns_large;
+            align-items: start;
+
+            @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
+                grid-template-columns: 1fr;
+                row-gap: $global_gap_between_columns;
+            }
+        }
+
+        dl.toggles-list {
+            background: linear-gradient(
+                299deg,
+                #1700c2 14.1%,
+                #08007d 62.48%,
+                #0a005c 91.39%
+            );
+            box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.23);
+            border-radius: 29px;
+            display: block;
+            margin: 0;
+            margin-right: -15%;
+            z-index: 2;
+
+            div.toggle {
+                display: block;
+                padding: 50px 140px;
+                padding-right: 140px;
+
+                &:has(button.toggle-trigger[aria-expanded='true']) {
+                    background-color: #2b43a7;
+                    border-radius: 29px;
+                }
+
+                > dt {
+                    h4 {
+                        margin: 0;
+                        color: $color_white;
+                    }
+
+                    button.toggle-trigger {
+                        .icon {
+                            width: 20px;
+                            height: 20px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            color: $color_white;
+                            border-radius: 50%;
+                            border: 2px solid $color_yellow;
+
+                            &:before {
+                                left: 50%;
+                                transform: translateX(-50%);
+                                content: '+' !important;
+                                font-size: 18px;
+                                background: unset;
+                                text-align: center;
+                            }
+
+                            &:after {
+                                left: 50%;
+                                transform: translateX(-50%);
+                                content: '−' !important;
+                                font-size: 18px;
+                                background: unset;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div.toggle-detail-panels {
+            min-width: 0;
+            transform: translateY(80px);
+            margin-left: -10%;
+            height: 100%;
+        }
+
+        div.toggle-detail-panel-wrap {
+            display: none;
+
+            &[aria-hidden='false'] {
+                display: block;
+                height: 100%;
+            }
+        }
+
+        div.toggle-detail-panel {
+            position: relative;
+            height: 100%;
+            padding: 75px;
+            padding-left: calc(15% + 75px);
+            padding-right: 90px;
+            filter: drop-shadow(0 4px 23px rgba(0, 0, 0, 0.1));
+            border-radius: 29px;
+            overflow: hidden;
+            color: $color_white;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: white;
+                opacity: 0.8;
+                z-index: 1;
+            }
+
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                padding: 28px 24px;
+            }
+        }
+
+        div.toggle-detail-image {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            filter: grayscale(1);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
+        }
+
+        div.toggle-detail-content {
+            position: relative;
+            z-index: 1;
+
+            h3 {
+                color: $color_blue;
+            }
+
+            p {
+                color: $color_black;
+            }
+
+            > *:first-child {
+                margin-top: 0;
+            }
+
+            > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &[data-layout='toggles'] {
     }
 }

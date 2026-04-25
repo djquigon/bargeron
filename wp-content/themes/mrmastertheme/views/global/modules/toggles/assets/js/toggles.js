@@ -9,12 +9,7 @@
             return;
         }
 
-        if (trigger.getAttribute('aria-expanded') === 'false') {
-            trigger.setAttribute('aria-expanded', 'true');
-        } else if (trigger.getAttribute('aria-expanded') === 'true') {
-            trigger.setAttribute('aria-expanded', 'false');
-        }
-
+        var module = trigger.closest('.toggles');
         var answerId = trigger.getAttribute('aria-controls');
         if (!answerId) {
             return;
@@ -23,6 +18,33 @@
         var answer = document.getElementById(answerId);
         if (!answer) {
             return;
+        }
+
+        if (module && module.getAttribute('data-layout') === 'images') {
+            if (trigger.getAttribute('aria-expanded') === 'true') {
+                return;
+            }
+
+            var triggers = module.querySelectorAll('.toggle-trigger');
+            var answers = module.querySelectorAll('.answer');
+
+            triggers.forEach(function (item) {
+                item.setAttribute('aria-expanded', 'false');
+            });
+
+            answers.forEach(function (item) {
+                item.setAttribute('aria-hidden', 'true');
+            });
+
+            trigger.setAttribute('aria-expanded', 'true');
+            answer.setAttribute('aria-hidden', 'false');
+            return;
+        }
+
+        if (trigger.getAttribute('aria-expanded') === 'false') {
+            trigger.setAttribute('aria-expanded', 'true');
+        } else if (trigger.getAttribute('aria-expanded') === 'true') {
+            trigger.setAttribute('aria-expanded', 'false');
         }
 
         if (answer.getAttribute('aria-hidden') === 'false') {

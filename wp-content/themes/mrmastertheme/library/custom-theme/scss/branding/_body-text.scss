@@ -7,6 +7,7 @@ body {
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
+    line-height: 1.5;
     overflow-x: hidden;
 
     @media (min-width: $breakpoint_before_mobile_large) {
@@ -61,10 +62,17 @@ p {
     + h6,
     + .h6,
     + a,
-    + a.button,
     + img,
     + picture {
         margin-top: $global_paragraph_bottom_margin;
+    }
+
+    + .button {
+        margin-top: 40px;
+    }
+
+    &:has(.button) {
+        margin-top: 40px;
     }
 }
 

@@ -16,6 +16,8 @@
         $aria_controls_value = $args['aria_controls_value'];
     }
 
+    $is_open = !empty($args['is_open']);
+
     //Category IDs are an optional argument, & mainly used for situations in which we need to filter a list of toggles by category or some other taxonomy. (e.g. FAQs Directory feature)
     $category_ids_attribute_string = '';
     if (isset($args['category_ids'])) {
@@ -53,7 +55,7 @@
                 <h3>
                     <button 
                         class="toggle-trigger" 
-                        aria-expanded="false"   
+                        aria-expanded="<?= $is_open ? 'true' : 'false' ?>"   
                         aria-controls="<?= $aria_controls_value ?>"
                     >
                         <?= $question ?>
@@ -63,7 +65,7 @@
             </dt>
             <dd 
                 class="answer" 
-                id="<?= $aria_controls_value ?>" aria-hidden="true"
+                id="<?= $aria_controls_value ?>" aria-hidden="<?= $is_open ? 'false' : 'true' ?>"
             >
                 <?= $answer ?>
             </dd>      
