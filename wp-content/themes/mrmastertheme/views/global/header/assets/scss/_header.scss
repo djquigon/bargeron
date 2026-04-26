@@ -1,6 +1,12 @@
 #header {
+    background: linear-gradient(
+        180deg,
+        #e2e2e2 32.75%,
+        rgba(255, 255, 255, 0) 102.73%
+    );
     background-color: #fff;
     box-shadow: 0 0 10px grey;
+    border-bottom: 3px solid $color-blue;
     position: static;
     //to take care of a specific styling 'bug', we apply fixed positioning with JavaScript at the exact moment we apply a top margin to the <main>
     z-index: 250;
@@ -9,8 +15,11 @@
     width: 100%;
     height: auto;
     text-align: center;
+    height: 128px;
 
-    transition: opacity 0.3s linear, transform 0.3s linear;
+    transition:
+        opacity 0.3s linear,
+        transform 0.3s linear;
 }
 
 body.admin-bar #header {

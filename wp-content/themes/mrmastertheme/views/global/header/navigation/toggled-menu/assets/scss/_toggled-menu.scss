@@ -10,6 +10,10 @@ button#menu-toggle-trigger {
     height: 24px;
     position: relative;
 
+    @media screen and (min-width: $breakpoint_tablet_large_portrait) {
+        display: none;
+    }
+
     &:hover,
     &:focus {
         //
