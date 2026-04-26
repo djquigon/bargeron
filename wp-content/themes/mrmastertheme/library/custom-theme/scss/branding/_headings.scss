@@ -150,6 +150,7 @@ h4,
     font-size: 24px;
     font-style: normal;
     font-weight: 400;
+    color: $color_blue_dark;
 
     @media (min-width: $breakpoint_before_mobile_large) {
         font-size: 26px;
@@ -188,6 +189,7 @@ h5,
     font-style: normal;
     font-weight: 600;
     letter-spacing: 0.69px;
+    color: $color_blue_dark;
 
     @media (min-width: $breakpoint_before_mobile_large) {
         font-size: 23px;

@@ -29,8 +29,12 @@ a {
 
     &:hover,
     &:focus {
-        text-decoration-line: underline;
+        text-decoration-line: none;
         //
+    }
+
+    &:not([class]) {
+        color: $color-black;
     }
 
     //ensures phone numbers never break into a new line

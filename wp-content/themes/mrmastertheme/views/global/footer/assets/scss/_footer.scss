@@ -1,3 +1,89 @@
 footer {
     //
+    .site-home-link {
+        max-width: 177px !important;
+        width: 177px !important;
+    }
+    .content-row {
+        padding: $global_module_padding_double 0;
+        h4,
+        .h4 {
+            font-weight: 500;
+            color: #0b005c;
+        }
+        #menu-footer-quicklinks {
+            a {
+                text-decoration: none;
+
+                &:hover,
+                &:focus {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .contact-info {
+            a {
+                color: $color_black;
+            }
+
+            .contact-phone {
+                display: inline-flex;
+                align-items: center;
+                &::before {
+                    content: '';
+                    background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/phone.svg)
+                        no-repeat center center;
+                    background-size: contain;
+                    width: 33px;
+                    height: 21px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+            }
+            .contact-email {
+                display: inline-flex;
+                align-items: center;
+                &::before {
+                    content: '';
+                    background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/mail.svg)
+                        no-repeat center center;
+                    background-size: contain;
+                    width: 33px;
+                    height: 14px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 10px;
+                }
+            }
+            .contact-address {
+                display: inline-flex;
+                align-items: center;
+                &::before {
+                    content: '';
+                    background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/pin.svg)
+                        no-repeat center center;
+                    background-size: contain;
+                    width: 20px;
+                    height: 30px;
+                    display: inline-block;
+                    vertical-align: middle;
+                    margin-right: 20px;
+                    transform: translateY(-12px) translateX(6px);
+                }
+            }
+        }
+    }
+
+    .copyright {
+        border-top: 3px solid #1700c2;
+        padding: 30px 0;
+        p {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            text-align: center;
+        }
+    }
 }
