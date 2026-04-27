@@ -55,34 +55,52 @@ div.toggles {
                         padding: 50px 140px;
                         padding-right: 160px;
                         .icon {
-                            width: 20px;
-                            height: 20px;
+                            width: 18px;
+                            height: 18px;
                             top: 50%;
                             right: 140px;
                             transform: translateY(-50%);
-                            color: $color_white;
-                            border-radius: 50%;
-                            border: 2px solid $color_yellow;
 
                             &:before {
-                                left: 50%;
-                                transform: translateX(-50%);
-                                content: '+' !important;
-                                font-size: 18px;
-                                background: unset;
-                                text-align: center;
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-image: url('library/custom-theme/images/icons/toggle-open.svg');
+                                background-position: center;
+                                background-size: 18px;
+                                background-repeat: no-repeat;
+                                pointer-events: none;
+
+                                opacity: 1;
                             }
 
                             &:after {
-                                left: 50%;
-                                transform: translateX(-50%);
-                                content: '−' !important;
-                                font-size: 18px;
-                                background: unset;
-                                text-align: center;
+                                content: '';
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-image: url('library/custom-theme/images/icons/toggle-close.svg');
+                                background-position: center;
+                                background-size: 18px;
+                                background-repeat: no-repeat;
+                                pointer-events: none;
+
+                                opacity: 0;
                             }
                         }
                     }
+                }
+                button.toggle-trigger[aria-expanded='true'] > span.icon:before {
+                    opacity: 0;
+                }
+
+                button.toggle-trigger[aria-expanded='true'] > span.icon:after {
+                    opacity: 1;
                 }
             }
         }
