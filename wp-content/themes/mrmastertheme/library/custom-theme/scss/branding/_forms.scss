@@ -145,3 +145,89 @@ div.gform_confirmation_message {
     display: flex;
     align-items: center;
 }
+
+.gform_footer.gform-footer {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 67px;
+    width: fit-content;
+    margin: 0 auto !important;
+    margin-top: 75px !important;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 33.5px;
+    color: $color_blue_dark;
+    text-decoration: none;
+
+    &::before {
+        content: '';
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 59px;
+        height: 59px;
+        border-radius: 50%;
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-alt.svg)
+            no-repeat center center;
+        background-size: contain;
+        z-index: 2;
+        pointer-events: none;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover,
+    &:focus-within {
+        text-decoration: none;
+
+        .gform_button {
+            background: $color_yellow_dark;
+        }
+
+        &::before {
+            transform: translateY(-50%) rotate(46deg);
+            filter: brightness(1);
+        }
+    }
+
+    .gform_button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 67px;
+        padding: 16px 95px 16px 32px;
+        border: none;
+        border-radius: 33.5px;
+        appearance: none;
+        margin-bottom: 0 !important;
+
+        color: $color_blue_dark;
+
+        font-family: 'Spline Sans';
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 0.66px;
+
+        background: $color_yellow;
+        cursor: pointer;
+
+        -webkit-mask-image: radial-gradient(
+            circle 35px at calc(100% - 33px) 50%,
+            transparent 0 34px,
+            black 35px
+        );
+        mask-image: radial-gradient(
+            circle 35px at calc(100% - 33px) 50%,
+            transparent 0 34px,
+            black 35px
+        );
+
+        &::before {
+            content: none;
+        }
+    }
+}

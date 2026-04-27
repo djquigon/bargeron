@@ -66,11 +66,11 @@ nav#primary-nav {
                 &::before {
                     content: '';
                     position: absolute;
-                    right: 6px;
+                    right: 4px;
                     top: 50%;
                     transform: translateY(-50%);
-                    width: 53px;
-                    height: 53px;
+                    width: 59px;
+                    height: 59px;
                     border-radius: 50%;
                     background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow.svg)
                         no-repeat center center;
