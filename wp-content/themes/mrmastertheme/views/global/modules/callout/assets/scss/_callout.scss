@@ -15,10 +15,15 @@ div.callout {
     }
 
     div.content {
-        h2 {
+        h2,
+        .h2 {
             color: $color_yellow;
         }
         p {
+            color: $color_white;
+        }
+        h6,
+        .h6 {
             color: $color_white;
         }
         .button {

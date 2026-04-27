@@ -167,6 +167,7 @@ nav#primary-nav {
                 font-weight: 400;
                 line-height: normal;
                 text-decoration: none;
+                transform: translateY(1px);
 
                 &:after {
                     content: '';
@@ -234,7 +235,6 @@ nav#primary-nav {
 
                 //immediate sub-menu item(s)
                 > li {
-                    padding: 20px;
                     transition: background-color 0.3s ease-in-out;
                     &:hover,
                     &:focus,
@@ -243,6 +243,7 @@ nav#primary-nav {
                     }
                     > a {
                         display: block;
+                        padding: 20px;
                         width: 100%;
                         height: auto;
                         text-decoration: none;
