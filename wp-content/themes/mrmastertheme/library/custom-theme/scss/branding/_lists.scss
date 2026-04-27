@@ -21,18 +21,19 @@ ul:not([class]) {
     li:not([class]) {
         position: relative;
         list-style-type: none;
-        padding-left: 20px;
+        padding-left: 55px;
 
         &:before {
             content: '';
-            background-color: $color_black;
+            background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/bullet-blue.svg)
+                no-repeat center center;
+            background-size: contain;
             position: absolute;
             display: inline-block;
-            top: 12px;
+            top: 10px;
             left: 0;
-
-            width: 5px;
-            height: 5px;
+            width: 43px;
+            height: 13px;
             line-height: 0;
             text-indent: 0;
         }

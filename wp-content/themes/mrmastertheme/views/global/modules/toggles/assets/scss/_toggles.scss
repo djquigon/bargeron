@@ -198,17 +198,22 @@ div.toggles {
                     #0a005c 91.39%
                 );
                 box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.23);
-                padding: 45px 84px;
                 .toggle-trigger {
                     color: #f5e32b;
                     font-family: 'Spline Sans';
                     font-size: 32px;
                     font-style: normal;
                     font-weight: 400;
+                    padding: 45px 84px;
+                    .icon {
+                        right: 84px;
+                        top: 51px;
+                    }
                 }
                 .answer {
                     color: #fff;
-                    margin-top: 40px;
+                    padding: 45px 84px;
+                    padding-top: 0;
                     &[aria-hidden='false'] {
                         display: block;
                     }
@@ -216,6 +221,16 @@ div.toggles {
                         display: none;
                     }
                 }
+            }
+        }
+    }
+
+    ul:not([class]) {
+        li:not([class]) {
+            &:before {
+                background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/bullet-yellow.svg)
+                    no-repeat center center;
+                background-size: contain;
             }
         }
     }

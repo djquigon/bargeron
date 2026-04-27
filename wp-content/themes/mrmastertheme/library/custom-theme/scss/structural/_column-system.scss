@@ -72,7 +72,7 @@ footer {
         &:has(span.row-settings[data-container-width='wide']) .container {
             width: $global_container_width_wide;
 
-            @media screen and (max-width: $breakpoint_laptop_large) {
+            @media screen and (max-width: $breakpoint_desktop_wide) {
                 width: 100%;
                 padding: $global_container_responsive_left_right_padding;
             }
