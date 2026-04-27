@@ -13,11 +13,36 @@ div.three-link-columns {
         gap: 5px;
 
         .column {
+            position: relative;
             background: var(--column-background-image);
             padding: 120px 75px;
             padding-bottom: 440px;
             border-radius: 25px;
             width: calc(33.33% - 5px);
+
+            .column-link {
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+            }
+
+            .column-inner {
+                position: relative;
+                z-index: 2;
+                pointer-events: none;
+
+                .content {
+                    h3 {
+                    }
+                    p {
+                        color: white;
+                    }
+                }
+
+                a {
+                    pointer-events: auto;
+                }
+            }
         }
     }
 }

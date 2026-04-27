@@ -116,6 +116,17 @@ if ($columns) :
                     $link_url = $link;
                 }
 
+                $link_label = '';
+                if (preg_match('/<h[2-6][^>]*>(.*?)<\/h[2-6]>/is', $content, $matches)) {
+                    $link_label = trim(wp_strip_all_tags($matches[1]));
+                }
+
+                if (!$link_label) {
+                    $link_label = trim(wp_strip_all_tags($content));
+                }
+
+                $link_label_attribute = $link_label ? ' aria-label="' . esc_attr($link_label) . '"' : '';
+
                 $style = '';
                 if (!empty($bg['url'])) {
                     $style = ' style="--column-background-image: url(' . esc_url($bg['url']) . ');"';
@@ -123,19 +134,18 @@ if ($columns) :
             ?>
                 <div class="column" <?= $style ?>>
                     <?php if ($link_url) : ?>
-                        <a class="column-link" href="<?= esc_url($link_url) ?>">
-                        <?php endif; ?>
-                        <div class="column-inner">
-                            <?php if (!empty($bg['url'])) : ?>
-                                <span class="column-background" aria-hidden="true"></span>
-                            <?php endif; ?>
-                            <div class="content">
-                                <?= $content ?>
-                            </div>
-                        </div>
-                        <?php if ($link_url) : ?>
+                        <a class="column-link" href="<?= esc_url($link_url) ?>" <?= $link_label_attribute ?>>
+                            <span class="sr-only"><?= $link_label ?></span>
                         </a>
                     <?php endif; ?>
+                    <div class="column-inner">
+                        <?php if (!empty($bg['url'])) : ?>
+                            <span class="column-background" aria-hidden="true"></span>
+                        <?php endif; ?>
+                        <div class="content">
+                            <?= $content ?>
+                        </div>
+                    </div>
                 </div>
             <?php } ?>
         </div>
