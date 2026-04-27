@@ -39,8 +39,6 @@ div.toggles {
 
             div.toggle {
                 display: block;
-                padding: 50px 140px;
-                padding-right: 140px;
 
                 &:has(button.toggle-trigger[aria-expanded='true']) {
                     background-color: #2b43a7;
@@ -54,10 +52,13 @@ div.toggles {
                     }
 
                     button.toggle-trigger {
+                        padding: 50px 140px;
+                        padding-right: 160px;
                         .icon {
                             width: 20px;
                             height: 20px;
                             top: 50%;
+                            right: 140px;
                             transform: translateY(-50%);
                             color: $color_white;
                             border-radius: 50%;

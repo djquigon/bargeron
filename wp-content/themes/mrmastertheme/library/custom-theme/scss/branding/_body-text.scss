@@ -105,31 +105,9 @@ body {
 .white-text {
     color: #fff;
 
-    h1,
-    .h1,
-    h2,
-    .h2,
-    h3,
-    .h3,
-    h4,
-    .h4,
-    h5,
-    .h5,
     h6,
-    .h6,
-    p,
-    ol li,
-    ul li {
-        color: #fff;
-
-        a:not(.button) {
-            color: #fff;
-
-            &:hover,
-            &:focus {
-                color: $color-black;
-            }
-        }
+    .h6 {
+        color: $color_white;
     }
 }
 

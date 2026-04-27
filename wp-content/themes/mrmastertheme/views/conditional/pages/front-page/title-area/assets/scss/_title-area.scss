@@ -2,6 +2,37 @@ body.home header.title-area,
 body.page-category-secondary-homepage header.title-area {
     position: relative;
     overflow: hidden;
+    padding-top: 185px !important;
+    padding-bottom: 185px !important;
+    overflow: visible;
+
+    &::before {
+        content: '';
+        position: absolute;
+        pointer-events: none;
+        z-index: -1;
+        top: 25px;
+        left: -500px;
+        width: 1705px;
+        height: 505px;
+        background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/bolt.svg)
+            no-repeat center center;
+        background-size: contain;
+    }
+
+    .content {
+        width: 45%;
+    }
+
+    span.background {
+        width: 55%;
+        height: calc(100% + 100px);
+        right: 0;
+        top: 0;
+        left: unset;
+        border-radius: 0 0 0 29px;
+        z-index: 3;
+    }
 
     span.overlay {
         // Overlay styles
@@ -12,6 +43,15 @@ body.page-category-secondary-homepage header.title-area {
         width: 100%;
         pointer-events: none;
         z-index: 1;
+    }
+
+    span.module-settings {
+        z-index: 3;
+    }
+
+    & + section {
+        padding-top: calc($global_module_padding_double + 100px);
+        z-index: 0;
     }
 }
 
