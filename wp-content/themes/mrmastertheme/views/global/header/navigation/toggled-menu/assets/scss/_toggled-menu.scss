@@ -6,11 +6,11 @@ button#menu-toggle-trigger {
     box-shadow: none;
     padding: 0;
     margin: 0 0 0 24px;
-    width: 32px;
-    height: 24px;
+    width: 42px;
+    height: 22px;
     position: relative;
 
-    @media screen and (min-width: $breakpoint_tablet_large_portrait) {
+    @media screen and (min-width: $breakpoint_laptop_large) {
         display: none;
     }
 
@@ -30,10 +30,10 @@ button#menu-toggle-trigger {
         span.bar {
             position: absolute;
             width: 100%;
-            height: 5px;
+            height: 3px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: $color-black;
+            background-color: $color_blue;
             pointer-events: none; //necessary for toggled-menu.js to work
 
             &.top {
@@ -54,17 +54,23 @@ button#menu-toggle-trigger {
 
     //'open' menu toggle button styling:
     &[aria-expanded='true'] span.button-bars span.bar.top {
+        background-color: white;
         top: 50%;
+        border-radius: 10px;
         transform: translate(-50%, -50%) rotate(45deg);
     }
 
     &[aria-expanded='true'] span.button-bars span.bar.middle {
+        background-color: white;
+        border-radius: 10px;
         display: none;
     }
 
     &[aria-expanded='true'] span.button-bars span.bar.bottom {
+        background-color: white;
         bottom: auto;
         top: 50%;
+        border-radius: 10px;
         transform: translate(-50%, -50%) rotate(-45deg);
     }
 }
@@ -106,10 +112,11 @@ nav#toggled-nav {
 
     //the inner menu 'window'
     > div.menu-wrap {
-        background-color: #fff;
+        background: linear-gradient(90deg, #0b005c 0%, #1700c2 100%);
         width: 450px;
+        padding-top: 75px;
+        padding-bottom: 0;
         max-width: 100%;
-        padding-bottom: $global_module_padding_double; //force recompile
         overflow-y: scroll;
         transform: translateX(0%);
 
@@ -117,6 +124,26 @@ nav#toggled-nav {
 
         @media screen and (max-width: $breakpoint_before_mobile_large) {
             width: 100%;
+        }
+
+        .toggled-menu {
+            > li {
+                text-align: left;
+                border-top: 3px solid #0b005c;
+                > a {
+                    display: block;
+                    padding: 25px 5%;
+                    color: $color_white;
+                    font-family: 'Spline Sans';
+                    font-size: 30px;
+                    font-style: normal;
+                    font-weight: 600;
+                    letter-spacing: 1.8px;
+                    text-transform: capitalize;
+                    text-decoration: none;
+                    text-align: left;
+                }
+            }
         }
 
         ul > li + li,
@@ -129,7 +156,7 @@ nav#toggled-nav {
             //
         }
 
-        @media screen and (max-width: $breakpoint_before_mobile_large) {
+        @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
             ul.toggled-menu-desktop-primary,
             ul.toggled-menu-desktop-secondary {
                 display: none;
@@ -140,7 +167,7 @@ nav#toggled-nav {
         ul.mobile-menu {
             display: none;
 
-            @media screen and (max-width: $breakpoint_before_mobile_large) {
+            @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
                 display: block;
             }
         }

@@ -54,9 +54,8 @@
 
         <?php
         //If a secondary menu is created AND assigned to the appropriate menu location:
-        if (has_nav_menu('secondary_menu')) {
-            get_template_part('views/global/header/navigation/secondary-menu/secondary-menu');
-        }
+        get_template_part('views/global/header/navigation/secondary-menu/secondary-menu');
+
         ?>
 
         <?php

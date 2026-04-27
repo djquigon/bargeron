@@ -1,7 +1,15 @@
 nav#primary-nav {
+    height: 128px;
+    @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+        height: 64px;
+    }
     @media screen and (max-width: $breakpoint_tablet_large_portrait) {
         //to correct for disappearing menu items:
         padding: 12px 0;
+    }
+
+    .container {
+        height: 100%;
     }
 
     //the main logo & homepage link:
@@ -12,6 +20,12 @@ nav#primary-nav {
         height: 211px;
         width: 211px;
         max-width: 211px;
+
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+            width: 106px;
+            height: 106px;
+            top: 39px;
+        }
 
         @media screen and (max-width: $breakpoint_laptop_large) {
             left: 5%;
@@ -30,7 +44,7 @@ nav#primary-nav {
     ul#menu-primary-navigation {
         display: flex;
         gap: 40px;
-        @media screen and (max-width: $breakpoint_tablet_large_portrait) {
+        @media screen and (max-width: $breakpoint_laptop_large) {
             display: none;
         }
 

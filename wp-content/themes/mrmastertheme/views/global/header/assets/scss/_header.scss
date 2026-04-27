@@ -13,13 +13,16 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: auto;
     text-align: center;
-    height: 128px;
-
+    height: auto;
     transition:
         opacity 0.3s linear,
         transform 0.3s linear;
+
+    &:has(#toggled-nav[aria-hidden='false']) {
+        background: linear-gradient(90deg, #0b005c 0%, #1700c2 100%);
+        border-bottom: 0;
+    }
 }
 
 body.admin-bar #header {
