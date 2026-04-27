@@ -169,5 +169,36 @@ div.toggles {
     }
 
     &[data-layout='toggles'] {
+        .toggles-list {
+            .toggle {
+                margin-top: 20px;
+                border-radius: 29px;
+                background: linear-gradient(
+                    299deg,
+                    #1700c2 14.1%,
+                    #08007d 62.48%,
+                    #0a005c 91.39%
+                );
+                box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.23);
+                padding: 45px 84px;
+                .toggle-trigger {
+                    color: #f5e32b;
+                    font-family: 'Spline Sans';
+                    font-size: 32px;
+                    font-style: normal;
+                    font-weight: 400;
+                }
+                .answer {
+                    color: #fff;
+                    margin-top: 40px;
+                    &[aria-hidden='false'] {
+                        display: block;
+                    }
+                    &[aria-hidden='true'] {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 }

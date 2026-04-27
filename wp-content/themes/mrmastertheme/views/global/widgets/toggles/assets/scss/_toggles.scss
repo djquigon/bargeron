@@ -18,10 +18,10 @@ dl div.toggle {
 
             > span.icon {
                 position: absolute;
-                top: 0;
+                top: 7px;
                 right: 0;
-                width: 24px;
-                height: 24px;
+                width: 26px;
+                height: 26px;
                 pointer-events: none;
 
                 &:before {
@@ -31,9 +31,9 @@ dl div.toggle {
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background-image: url('library/custom-theme/images/icons/sub-menu-toggle-open.svg');
+                    background-image: url('library/custom-theme/images/icons/toggle-open.svg');
                     background-position: center;
-                    background-size: 24px;
+                    background-size: 26px;
                     background-repeat: no-repeat;
                     pointer-events: none;
 
@@ -47,9 +47,9 @@ dl div.toggle {
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background-image: url('library/custom-theme/images/icons/sub-menu-toggle-close.svg');
+                    background-image: url('library/custom-theme/images/icons/toggle-close.svg');
                     background-position: center;
-                    background-size: 24px;
+                    background-size: 26px;
                     background-repeat: no-repeat;
                     pointer-events: none;
 
