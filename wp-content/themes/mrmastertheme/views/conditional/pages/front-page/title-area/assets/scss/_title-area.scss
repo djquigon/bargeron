@@ -11,8 +11,8 @@ body.page-category-secondary-homepage header.title-area {
         position: absolute;
         pointer-events: none;
         z-index: -1;
-        top: 25px;
-        left: -500px;
+        top: 50px;
+        left: -590px;
         width: 1705px;
         height: 505px;
         background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/bolt.svg)
@@ -22,6 +22,24 @@ body.page-category-secondary-homepage header.title-area {
 
     .content {
         width: 45%;
+        h6 {
+            &:first-of-type {
+                font-family: 'Spline Sans Mono';
+                font-size: 23px;
+                font-style: normal;
+                font-weight: 500;
+                letter-spacing: 4.6px;
+                text-transform: uppercase;
+            }
+            &:last-of-type {
+                font-family: 'Spline Sans Mono';
+                font-size: 30px;
+                font-style: normal;
+                font-weight: 500;
+                letter-spacing: 6px;
+                text-transform: uppercase;
+            }
+        }
     }
 
     span.background {
@@ -32,6 +50,7 @@ body.page-category-secondary-homepage header.title-area {
         left: unset;
         border-radius: 0 0 0 29px;
         z-index: 3;
+        background-position: center !important;
     }
 
     span.overlay {
