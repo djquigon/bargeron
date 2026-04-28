@@ -69,7 +69,7 @@ body.page-category-secondary-homepage header.title-area {
     }
 
     & + section {
-        padding-top: calc($global_module_padding_double + 100px);
+        padding-top: calc($global_module_padding_double + 100px) !important;
         z-index: 0;
     }
 }

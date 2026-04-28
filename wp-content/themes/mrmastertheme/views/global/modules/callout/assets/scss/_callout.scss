@@ -1,12 +1,37 @@
 section.callout,
 aside.callout,
 div.callout {
+    mask-image: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/callout-mask.png);
+    mask-size: 100% 100%;
+    mask-position: top;
+    mask-repeat: no-repeat;
     position: relative;
     isolation: isolate;
     background: url('/wp-content/themes/mrmastertheme/library/custom-theme/images/callout-bg.jpg');
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-top: calc($global_module_padding_double + 70px) !important;
+    padding-bottom: calc($global_module_padding_double + 70px) !important;
+
+    &.flat-top {
+        mask-size: 100% calc(100% + 75px);
+        mask-position: bottom;
+        padding-top: $global_module_padding_double !important;
+    }
+
+    &.flat-bottom {
+        mask-size: 100% calc(100% + 75px) !important;
+        padding-bottom: $global_module_padding_double !important;
+    }
+
+    &.reverse {
+        mask-image: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/callout-mask-reverse.png);
+    }
+
+    &.large {
+        mask-image: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/callout-mask-large.png);
+    }
 
     > .container,
     > .module-settings {
@@ -49,5 +74,13 @@ div.callout {
                 }
             }
         }
+    }
+}
+
+.overlap {
+    padding-bottom: calc($global_module_padding_double + 100px) !important;
+
+    + .callout {
+        margin-top: -100px;
     }
 }
