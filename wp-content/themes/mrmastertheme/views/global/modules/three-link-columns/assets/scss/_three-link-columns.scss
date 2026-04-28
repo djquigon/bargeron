@@ -21,20 +21,21 @@ div.three-link-columns {
         &::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: -15px;
             left: 0;
-            z-index: 0;
+            z-index: 2;
             width: 100%;
-            height: 100%;
+            height: calc(100% + 15px);
             background: linear-gradient(
                 180deg,
                 #e2e2e2 29.34%,
                 rgba(226, 226, 226, 0) 87.07%
             );
+            pointer-events: none;
             transition: height 1s ease;
-            z-index: 1;
 
             @media (max-width: $breakpoint_tablet_medium_landscape) {
+                top: 0;
                 height: 100%;
             }
         }
@@ -47,18 +48,11 @@ div.three-link-columns {
         }
 
         .column {
-            isolation: isolate;
-            overflow: hidden;
             position: relative;
             top: 0;
             height: 858px;
             padding: 80px 40px;
-            background-image: var(--column-background-image);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
             //border-radius: 25px;
-            clip-path: polygon(20% 0, 100% 0%, 80% 100%, 0 100%);
             transition:
                 height 1s ease,
                 top 1s ease;
@@ -73,8 +67,28 @@ div.three-link-columns {
                     height: 912px;
                     z-index: 3;
 
+                    h3 {
+                        color: $color_yellow;
+                    }
+
+                    p {
+                        color: $color_white;
+                    }
+
+                    a.button--alt {
+                        &::before {
+                            background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-alt-2.svg)
+                                no-repeat center center;
+                            background-size: contain;
+                        }
+                        .text-wrap {
+                            color: white;
+                            border-bottom: 3px solid $color_yellow;
+                        }
+                    }
+
                     &::before {
-                        height: 100%;
+                        opacity: 1;
                     }
                 }
             }
@@ -84,17 +98,73 @@ div.three-link-columns {
                 min-height: 507px;
                 height: auto;
                 padding: $global_module_padding_single 5%;
-                clip-path: none;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    180deg,
+                    #1701c2 18.16%,
+                    rgba(11, 0, 92, 0) 96.2%
+                );
+                clip-path: polygon(20% 0, 100% 0%, 80% 100%, 0 100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 1s ease;
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    clip-path: none;
+                }
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                background-image: var(--column-background-image);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                clip-path: polygon(20% 0, 100% 0%, 80% 100%, 0 100%);
+                pointer-events: none;
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    clip-path: none;
+                }
             }
 
             &:first-child {
                 left: 0;
                 width: 38%;
-                clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+
+                &::after {
+                    clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+                }
+
+                &::before {
+                    clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+                }
 
                 @media (max-width: $breakpoint_tablet_medium_landscape) {
                     width: 100%;
-                    clip-path: none;
+
+                    &::after {
+                        clip-path: none;
+                    }
+
+                    &::before {
+                        clip-path: none;
+                    }
                 }
             }
 
@@ -104,24 +174,46 @@ div.three-link-columns {
                 @media (max-width: $breakpoint_tablet_medium_landscape) {
                     left: 0;
                 }
+
+                .content {
+                    margin-left: 100px;
+                }
             }
 
             &:last-child {
                 left: 61.5%;
                 width: 38%;
-                clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+
+                &::after {
+                    clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+                }
+
+                &::before {
+                    clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+                }
 
                 @media (max-width: $breakpoint_tablet_medium_landscape) {
                     left: 0;
                     width: 100%;
-                    clip-path: none;
+
+                    &::after {
+                        clip-path: none;
+                    }
+
+                    &::before {
+                        clip-path: none;
+                    }
+                }
+
+                .content {
+                    margin-left: 150px;
                 }
             }
 
             .column-link {
                 position: absolute;
                 inset: 0;
-                z-index: 1;
+                z-index: 4;
                 text-decoration: none;
             }
 
@@ -130,25 +222,19 @@ div.three-link-columns {
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
-                z-index: 2;
+                z-index: 3;
                 width: 80%;
                 height: 100%;
                 margin: 0 auto;
                 pointer-events: none;
 
                 .content {
-                    h3 {
-                        color: $color_white;
-                    }
-
-                    p {
-                        color: $color_white;
-                    }
+                    max-width: 420px;
                 }
 
                 a {
                     position: relative;
-                    z-index: 3;
+                    z-index: 5;
                     pointer-events: auto;
                 }
             }
