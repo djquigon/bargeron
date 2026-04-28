@@ -32,6 +32,7 @@ div.three-link-columns {
                 rgba(226, 226, 226, 0) 87.07%
             );
             transition: height 1s ease;
+            z-index: 1;
 
             @media (max-width: $breakpoint_tablet_medium_landscape) {
                 height: 100%;
