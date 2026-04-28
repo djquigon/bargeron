@@ -8,38 +8,146 @@ div.three-link-columns {
         rgba(255, 255, 255, 0) 102.73%
     );
 
+    div.columns-row {
+        overflow: visible;
+    }
+
     div.columns {
-        //
-        gap: 5px;
+        position: relative;
+        display: block;
+        min-height: 912px;
+        gap: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                #e2e2e2 29.34%,
+                rgba(226, 226, 226, 0) 87.07%
+            );
+            transition: height 1s ease;
+
+            @media (max-width: $breakpoint_tablet_medium_landscape) {
+                height: 100%;
+            }
+        }
+
+        @media (max-width: $breakpoint_tablet_medium_landscape) {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            gap: 5px;
+        }
 
         .column {
+            isolation: isolate;
+            overflow: hidden;
             position: relative;
-            background: var(--column-background-image);
-            padding: 120px 75px;
-            padding-bottom: 440px;
-            border-radius: 25px;
-            width: calc(33.33% - 5px);
+            top: 0;
+            height: 858px;
+            padding: 80px 40px;
+            background-image: var(--column-background-image);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            //border-radius: 25px;
+            clip-path: polygon(20% 0, 100% 0%, 80% 100%, 0 100%);
+            transition:
+                height 1s ease,
+                top 1s ease;
+
+            @media (min-width: $breakpoint_tablet_medium_landscape) {
+                position: absolute;
+                width: 38%;
+
+                &:hover,
+                &:focus-within {
+                    top: -15px;
+                    height: 912px;
+                    z-index: 3;
+
+                    &::before {
+                        height: 100%;
+                    }
+                }
+            }
+
+            @media (max-width: $breakpoint_tablet_medium_landscape) {
+                width: 100%;
+                min-height: 507px;
+                height: auto;
+                padding: $global_module_padding_single 5%;
+                clip-path: none;
+            }
+
+            &:first-child {
+                left: 0;
+                width: 38%;
+                clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    width: 100%;
+                    clip-path: none;
+                }
+            }
+
+            &:nth-child(2) {
+                left: 30.8%;
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    left: 0;
+                }
+            }
+
+            &:last-child {
+                left: 61.5%;
+                width: 38%;
+                clip-path: polygon(20% 0, 100% 0%, 100% 100%, 0% 100%);
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    left: 0;
+                    width: 100%;
+                    clip-path: none;
+                }
+            }
 
             .column-link {
                 position: absolute;
                 inset: 0;
                 z-index: 1;
+                text-decoration: none;
             }
 
             .column-inner {
                 position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
                 z-index: 2;
+                width: 80%;
+                height: 100%;
+                margin: 0 auto;
                 pointer-events: none;
 
                 .content {
                     h3 {
+                        color: $color_white;
                     }
+
                     p {
-                        color: white;
+                        color: $color_white;
                     }
                 }
 
                 a {
+                    position: relative;
+                    z-index: 3;
                     pointer-events: auto;
                 }
             }
