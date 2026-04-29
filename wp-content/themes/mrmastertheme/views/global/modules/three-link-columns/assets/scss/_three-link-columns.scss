@@ -58,6 +58,7 @@ div.three-link-columns {
             --column-layer-right: auto;
             --column-layer-width: 100%;
             --column-layer-transform-origin: center top;
+            pointer-events: none;
             transition:
                 height 1s ease,
                 top 1s ease;
@@ -219,9 +220,25 @@ div.three-link-columns {
 
             .column-link {
                 position: absolute;
-                inset: 0;
+                top: 0;
+                right: var(--column-layer-right);
+                left: var(--column-layer-left);
                 z-index: 4;
+                display: block;
+                width: var(--column-layer-width);
+                height: 100%;
+                border-radius: 29px;
+                transform: skewX(-7deg);
+                transform-origin: var(--column-layer-transform-origin);
                 text-decoration: none;
+                pointer-events: auto;
+
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    right: auto;
+                    left: 0;
+                    width: 100%;
+                    transform: none;
+                }
             }
 
             .column-inner {
