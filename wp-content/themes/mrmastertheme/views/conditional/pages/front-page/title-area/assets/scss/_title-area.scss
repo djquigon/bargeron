@@ -7,8 +7,12 @@ body.page-category-secondary-homepage header.title-area {
     overflow: visible;
 
     @media screen and (max-width: 1024px) {
-        padding-top: 100px !important;
+        padding-top: 150px !important;
         padding-bottom: 0 !important;
+    }
+
+    @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+        padding-top: 100px !important;
     }
 
     &::before {
