@@ -218,6 +218,12 @@ div.three-link-columns {
                 }
 
                 .content {
+                    @media (min-width: 2400px) {
+                        margin-left: 200px !important;
+                    }
+                    @media (min-width: 2100px) {
+                        margin-left: 150px;
+                    }
                     margin-left: 100px;
                     @media (max-width: 1440px) {
                         margin-left: 50px;
@@ -259,6 +265,9 @@ div.three-link-columns {
                 }
 
                 .content {
+                    @media (min-width: 2400px) {
+                        margin-left: 200px;
+                    }
                     margin-left: 150px;
                     @media (max-width: 1440px) {
                         margin-left: 100px;
