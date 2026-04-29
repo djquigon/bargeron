@@ -228,6 +228,11 @@ div.three-link-columns {
                     @media (max-width: 1140px) {
                         margin-left: 20px;
                     }
+                    @media (max-width: $breakpoint_tablet_medium_landscape) {
+                        .button--alt {
+                            max-width: 100%;
+                        }
+                    }
                 }
             }
 
@@ -263,6 +268,11 @@ div.three-link-columns {
                     }
                     @media (max-width: 1140px) {
                         margin-left: 50px;
+                    }
+                    @media (max-width: $breakpoint_tablet_medium_landscape) {
+                        .button--alt {
+                            max-width: 100%;
+                        }
                     }
                 }
             }

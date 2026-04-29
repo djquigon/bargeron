@@ -3,12 +3,59 @@ aside.testimonials,
 div.testimonials {
     &[data-layout='columns'] {
         overflow: hidden;
+        @media (max-width: $breakpoint_tablet_medium_portrait) {
+            background: linear-gradient(
+                325deg,
+                #1700c2 14.1%,
+                #08007d 62.48%,
+                #0a005c 91.39%
+            );
+            .background {
+                display: none;
+            }
+        }
+
+        div.intro-content-row {
+            @media (max-width: $breakpoint_tablet_medium_portrait) {
+                h1,
+                h2,
+                h3,
+                h4,
+                h5,
+                h6,
+                p {
+                    text-align: left !important;
+                }
+
+                h1,
+                h2 {
+                    color: $color_yellow;
+                }
+                h3,
+                h4,
+                h5,
+                h6,
+                p {
+                    color: $color_white;
+                }
+            }
+        }
 
         div.testimonials-row {
             width: 1935px;
             position: relative;
             margin-left: 18.5%;
             padding: $global_module_padding_double 0;
+            @media (max-width: $breakpoint_tablet_medium_landscape) {
+                width: 1000px;
+            }
+            @media (max-width: $breakpoint_tablet_medium_portrait) {
+                width: 100%;
+                margin-left: 0;
+                padding-top: $global_module_padding_single;
+                padding-bottom: 0;
+                margin-top: 0;
+            }
             &::before {
                 content: '';
                 display: block;
@@ -27,12 +74,21 @@ div.testimonials {
                 left: -23%;
                 transform: translateY(-50%) skewX(-20deg);
                 transform-origin: top left;
+                @media (max-width: $breakpoint_tablet_medium_portrait) {
+                    display: none;
+                }
             }
 
             div.testimonials-slider {
                 margin-left: 0;
                 margin-right: 0;
                 width: 1935px;
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    width: 1000px;
+                }
+                @media (max-width: $breakpoint_tablet_medium_portrait) {
+                    width: 100%;
+                }
             }
 
             div.testimonials-slider-arrows {
@@ -42,6 +98,11 @@ div.testimonials {
                 button.slick-arrow {
                     width: 55px;
                     height: 55px;
+
+                    @media (max-width: $breakpoint_tablet_medium_portrait) {
+                        width: 35px;
+                        height: 35px;
+                    }
 
                     &:before {
                         content: '';
@@ -53,6 +114,15 @@ div.testimonials {
                         background-size: contain;
                         border-radius: 50%;
                         filter: brightness(0.5);
+
+                        @media (max-width: $breakpoint_tablet_medium_portrait) {
+                            width: 35px;
+                            height: 35px;
+                            background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-alt-2.svg)
+                                no-repeat center center;
+                            filter: brightness(1);
+                            background-size: contain;
+                        }
                     }
 
                     &.slick-prev:before {
@@ -71,8 +141,14 @@ div.testimonials {
                     }
                 }
 
-                @media screen and (max-width: $breakpoint_tablet_medium_landscape) {
-                    display: none;
+                @media (max-width: $breakpoint_tablet_medium_portrait) {
+                    position: unset;
+                    // left: 50%;
+                    // transform: translateX(-50%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
                 }
             }
         }
@@ -87,6 +163,12 @@ div.testimonials {
             background-color: $color_white;
             border-radius: 20px;
             // box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+
+            @media (max-width: $breakpoint_tablet_medium_portrait) {
+                padding: 30px;
+                margin: 3px;
+                //margin-right: 5px;
+            }
 
             div.content {
                 margin-bottom: 20px;
