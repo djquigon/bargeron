@@ -8,6 +8,10 @@ div.three-link-columns {
         rgba(255, 255, 255, 0) 102.73%
     );
 
+    @media (max-width: $breakpoint_tablet_medium_landscape) {
+        padding-bottom: 0 !important;
+    }
+
     div.columns-row {
         overflow: visible;
     }
@@ -35,8 +39,9 @@ div.three-link-columns {
             transition: height 1s ease;
 
             @media (max-width: $breakpoint_tablet_medium_landscape) {
-                top: 0;
-                height: 100%;
+                content: unset;
+                // top: 0;
+                // height: 100%;
             }
         }
 
@@ -44,7 +49,7 @@ div.three-link-columns {
             display: flex;
             flex-direction: column;
             min-height: 0;
-            gap: 5px;
+            gap: 0px;
         }
 
         .column {
@@ -105,37 +110,56 @@ div.three-link-columns {
 
             @media (max-width: $breakpoint_tablet_medium_landscape) {
                 width: 100%;
-                min-height: 507px;
                 height: auto;
                 padding: $global_module_padding_single 5%;
+                border-radius: 0 !important;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0px;
+                    left: 0;
+                    z-index: 2;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(
+                        180deg,
+                        #bababa 19.58%,
+                        #fff 100%
+                    );
+                    opacity: 0.81;
+                    pointer-events: none;
+                    transition: height 1s ease;
+                }
             }
 
-            &::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                right: var(--column-layer-right);
-                left: var(--column-layer-left);
-                z-index: 2;
-                width: var(--column-layer-width);
-                height: 100%;
-                background: linear-gradient(
-                    180deg,
-                    #1701c2 18.16%,
-                    rgba(11, 0, 92, 0) 96.2%
-                );
-                border-radius: 29px;
-                opacity: 0;
-                pointer-events: none;
-                transform: skewX(-7deg);
-                transform-origin: var(--column-layer-transform-origin);
-                transition: opacity 1s ease;
+            @media (min-width: $breakpoint_tablet_medium_landscape) {
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: var(--column-layer-right);
+                    left: var(--column-layer-left);
+                    z-index: 2;
+                    width: var(--column-layer-width);
+                    height: 100%;
+                    background: linear-gradient(
+                        180deg,
+                        #1701c2 18.16%,
+                        rgba(11, 0, 92, 0) 96.2%
+                    );
+                    border-radius: 29px;
+                    opacity: 0;
+                    pointer-events: none;
+                    transform: skewX(-7deg);
+                    transform-origin: var(--column-layer-transform-origin);
+                    transition: opacity 1s ease;
 
-                @media (max-width: $breakpoint_tablet_medium_landscape) {
-                    right: auto;
-                    left: 0;
-                    width: 100%;
-                    transform: none;
+                    @media (max-width: $breakpoint_tablet_medium_landscape) {
+                        right: auto;
+                        left: 0;
+                        width: 100%;
+                        transform: none;
+                    }
                 }
             }
 
@@ -163,6 +187,7 @@ div.three-link-columns {
                     left: 0;
                     width: 100%;
                     transform: none;
+                    border-radius: 0 !important;
                 }
             }
 
@@ -187,10 +212,22 @@ div.three-link-columns {
                     left: 0;
                     --column-layer-left: 0;
                     --column-layer-width: 100%;
+                    .content {
+                        margin-left: 0 !important;
+                    }
                 }
 
                 .content {
                     margin-left: 100px;
+                    @media (max-width: 1440px) {
+                        margin-left: 50px;
+                        .button--alt {
+                            max-width: 200px;
+                        }
+                    }
+                    @media (max-width: 1140px) {
+                        margin-left: 20px;
+                    }
                 }
             }
 
@@ -211,10 +248,22 @@ div.three-link-columns {
                     --column-layer-left: 0;
                     --column-layer-right: auto;
                     --column-layer-width: 100%;
+                    .content {
+                        margin-left: 0 !important;
+                    }
                 }
 
                 .content {
                     margin-left: 150px;
+                    @media (max-width: 1440px) {
+                        margin-left: 100px;
+                        .button--alt {
+                            max-width: 200px;
+                        }
+                    }
+                    @media (max-width: 1140px) {
+                        margin-left: 50px;
+                    }
                 }
             }
 
@@ -252,8 +301,16 @@ div.three-link-columns {
                 margin: 0 auto;
                 pointer-events: none;
 
+                @media (max-width: $breakpoint_tablet_medium_landscape) {
+                    width: 100% !important;
+                }
+
                 .content {
                     max-width: 420px;
+                    @media (max-width: $breakpoint_tablet_medium_landscape) {
+                        max-width: 100%;
+                        text-align: center;
+                    }
                 }
 
                 a {
