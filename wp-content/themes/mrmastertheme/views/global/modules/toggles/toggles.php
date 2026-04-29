@@ -131,6 +131,7 @@ if ($toggles) :
                         foreach ($toggles as $row) {
                             $content = $row['content'] ?? '';
                             $image = $row['image'] ?? null;
+                            $icon = $row['icon'] ?? null;
                             $aria_controls_value = 'toggle-' . $random_integer . '-' . $toggle_count;
                             $is_open = ($toggle_count === 0);
                         ?>
@@ -149,6 +150,11 @@ if ($toggles) :
                                         </div>
                                     <?php endif; ?>
                                     <div class="toggle-detail-content">
+                                        <?php if (!empty($icon)) : ?>
+                                            <div class="toggle-detail-icon">
+                                                <img src="<?= esc_url($icon['url']) ?>" alt="<?= esc_attr($icon['alt'] ?? '') ?>" loading="lazy" decoding="async">
+                                            </div>
+                                        <?php endif; ?>
                                         <?= $content ?>
                                     </div>
                                 </div>
