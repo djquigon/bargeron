@@ -33,7 +33,11 @@ nav#primary-nav {
         }
 
         @media screen and (max-width: $breakpoint_laptop_large) {
-            left: 0;
+            left: 5%;
+        }
+
+        @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
+            left: 0 !important;
         }
     }
 
