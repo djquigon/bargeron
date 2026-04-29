@@ -14,6 +14,9 @@ div.toggles {
 
         .toggles-row {
             margin-top: 80px;
+            @media (max-width: $breakpoint_tablet_medium_landscape) {
+                margin-top: 30px;
+            }
         }
         div.toggles-images-layout {
             display: grid;
