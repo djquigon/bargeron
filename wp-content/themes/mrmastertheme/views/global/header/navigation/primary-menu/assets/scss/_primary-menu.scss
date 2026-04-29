@@ -36,7 +36,7 @@ nav#primary-nav {
             left: 5%;
         }
 
-        @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
+        @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
             left: 0 !important;
         }
     }
