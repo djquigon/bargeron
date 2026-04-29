@@ -25,6 +25,16 @@
         background-size: contain;
         z-index: 2;
         pointer-events: none;
+
+        @media screen and (max-width: 768px) {
+            width: 54px;
+            height: 54px;
+            right: 10px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 56px;
     }
 
     &:hover,
@@ -75,6 +85,23 @@
         transparent 0 34px,
         black 35px
     );
+
+    @media screen and (max-width: 768px) {
+        height: 56px;
+        font-size: 18px;
+        letter-spacing: 0.54px;
+
+        -webkit-mask-image: radial-gradient(
+            circle 35px at calc(100% - 34px) 50%,
+            transparent 0 34px,
+            black 35px
+        );
+        mask-image: radial-gradient(
+            circle 35px at calc(100% - 34px) 50%,
+            transparent 0 34px,
+            black 35px
+        );
+    }
 }
 
 .button--alt {

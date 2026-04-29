@@ -6,6 +6,11 @@ body.page-category-secondary-homepage header.title-area {
     padding-bottom: 185px !important;
     overflow: visible;
 
+    @media screen and (max-width: 1024px) {
+        padding-top: 100px !important;
+        padding-bottom: 0 !important;
+    }
+
     &::before {
         content: '';
         position: absolute;
@@ -18,10 +23,20 @@ body.page-category-secondary-homepage header.title-area {
         background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/bolt.svg)
             no-repeat center center;
         background-size: contain;
+
+        @media screen and (max-width: 1024px) {
+            left: -100px;
+            top: 95px;
+            width: 870px;
+            height: 258px;
+        }
     }
 
     .content {
         width: 45%;
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+        }
         h6 {
             &:first-of-type {
                 font-family: 'Spline Sans Mono';
@@ -30,6 +45,10 @@ body.page-category-secondary-homepage header.title-area {
                 font-weight: 500;
                 letter-spacing: 4.6px;
                 text-transform: uppercase;
+                @media screen and (max-width: 768px) {
+                    font-size: 15px;
+                    letter-spacing: 3.8px;
+                }
             }
             &:last-of-type {
                 font-family: 'Spline Sans Mono';
@@ -38,6 +57,17 @@ body.page-category-secondary-homepage header.title-area {
                 font-weight: 500;
                 letter-spacing: 6px;
                 text-transform: uppercase;
+                @media screen and (max-width: 768px) {
+                    font-size: 19px;
+                    letter-spacing: 3.8px;
+                    margin-top: 10px !important;
+                }
+            }
+        }
+        h1 {
+            @media screen and (max-width: 768px) {
+                margin-top: 10px !important;
+                margin-bottom: 0px !important;
             }
         }
     }
@@ -51,6 +81,25 @@ body.page-category-secondary-homepage header.title-area {
         border-radius: 0 0 0 29px;
         z-index: 3;
         background-position: center !important;
+        @media screen and (max-width: 1660px) {
+            width: 45%;
+        }
+
+        @media screen and (max-width: 1024px) {
+            width: 100%;
+            display: block;
+            height: 500px;
+            position: unset;
+            margin-top: 40px;
+            border-radius: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            height: 300px;
+        }
+        @media screen and (max-width: 480px) {
+            height: 235px;
+        }
     }
 
     span.overlay {
@@ -66,11 +115,18 @@ body.page-category-secondary-homepage header.title-area {
 
     span.module-settings {
         z-index: 3;
+        @media screen and (max-width: 1024px) {
+            position: unset;
+        }
     }
 
     & + section {
         padding-top: calc($global_module_padding_double + 100px) !important;
         z-index: 0;
+
+        @media screen and (max-width: 1024px) {
+            padding-top: $global_module_padding_single !important;
+        }
     }
 }
 

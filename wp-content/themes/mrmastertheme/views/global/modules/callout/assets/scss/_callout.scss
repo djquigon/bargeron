@@ -14,6 +14,12 @@ div.callout {
     padding-top: calc($global_module_padding_double + 70px) !important;
     padding-bottom: calc($global_module_padding_double + 70px) !important;
 
+    @media screen and (max-width: 1024px) {
+        mask-image: unset !important;
+        padding-top: $global_module_padding_single !important;
+        padding-bottom: $global_module_padding_single !important;
+    }
+
     &.flat-top {
         mask-size: 100% calc(100% + 75px);
         mask-position: bottom;

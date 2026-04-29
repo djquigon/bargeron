@@ -95,6 +95,12 @@ if ($has_text || $has_images) :
             <?php if ($heading) : ?>
                 <h2 class="heading"><?= esc_html($heading) ?></h2>
             <?php endif; ?>
+            <?php if ($large_image) : ?>
+                <div class="large-image">
+                    <img src="<?= esc_url($large_image['url']) ?>" alt="<?= esc_attr($large_image['alt'] ?? '') ?>" width="<?= esc_attr($large_image['width'] ?? '') ?>" height="<?= esc_attr($large_image['height'] ?? '') ?>" loading="lazy" decoding="async" />
+                </div>
+            <?php endif; ?>
+
             <?php if ($content) : ?>
                 <div class="content">
                     <?= $content ?>
