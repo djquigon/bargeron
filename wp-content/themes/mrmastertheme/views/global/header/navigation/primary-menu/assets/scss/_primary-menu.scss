@@ -16,7 +16,7 @@ nav#primary-nav {
     a.site-home-link {
         position: absolute;
         top: 20px;
-        left: 5%;
+        left: 0;
         height: 211px;
         width: 211px;
         max-width: 211px;
@@ -32,7 +32,7 @@ nav#primary-nav {
             margin: 0 auto 0 0;
         }
 
-        @media screen and (max-width: $breakpoint_laptop_large) {
+        @media screen and (max-width: $breakpoint_desktop_wide) {
             left: 5%;
         }
 
