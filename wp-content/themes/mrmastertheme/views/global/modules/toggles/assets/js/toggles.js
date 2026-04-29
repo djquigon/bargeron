@@ -3,6 +3,8 @@
  * Uses delegation so all .toggle-trigger buttons work, including the Toggles flexible module.
  */
 (function () {
+    var imagesLayoutMobileQuery = window.matchMedia('(max-width: 64.0625em)');
+
     document.addEventListener('click', function (e) {
         var trigger = e.target.closest('.toggle-trigger');
         if (!trigger) {
@@ -10,8 +12,39 @@
         }
 
         var module = trigger.closest('.toggles');
+        var isImagesLayout =
+            module && module.getAttribute('data-layout') === 'images';
         var answerId = trigger.getAttribute('aria-controls');
         if (!answerId) {
+            return;
+        }
+
+        if (isImagesLayout && imagesLayoutMobileQuery.matches) {
+            var toggle = trigger.closest('.toggle');
+            var mobileAnswer = toggle
+                ? toggle.querySelector('.toggle-detail-panel-wrap--mobile')
+                : null;
+            var desktopAnswer = document.getElementById(answerId);
+            var isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+            var shouldOpen = !isExpanded;
+
+            if (!mobileAnswer) {
+                return;
+            }
+
+            trigger.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+            mobileAnswer.setAttribute(
+                'aria-hidden',
+                shouldOpen ? 'false' : 'true'
+            );
+
+            if (desktopAnswer) {
+                desktopAnswer.setAttribute(
+                    'aria-hidden',
+                    shouldOpen ? 'false' : 'true'
+                );
+            }
+
             return;
         }
 
@@ -20,7 +53,7 @@
             return;
         }
 
-        if (module && module.getAttribute('data-layout') === 'images') {
+        if (isImagesLayout) {
             if (trigger.getAttribute('aria-expanded') === 'true') {
                 return;
             }
@@ -38,6 +71,12 @@
 
             trigger.setAttribute('aria-expanded', 'true');
             answer.setAttribute('aria-hidden', 'false');
+
+            answers.forEach(function (item) {
+                if (item.getAttribute('data-mobile-answer-for') === answerId) {
+                    item.setAttribute('aria-hidden', 'false');
+                }
+            });
             return;
         }
 

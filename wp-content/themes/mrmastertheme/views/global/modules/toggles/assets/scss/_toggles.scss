@@ -47,6 +47,16 @@ div.toggles {
                 &:has(button.toggle-trigger[aria-expanded='true']) {
                     background-color: #2b43a7;
                     border-radius: 29px;
+                    @media (max-width: $breakpoint_tablet_medium_landscape) {
+                        button.toggle-trigger {
+                            color: $color_yellow;
+                        }
+                        .toggle-detail-icon {
+                            img {
+                                filter: brightness(0) invert(1);
+                            }
+                        }
+                    }
                 }
 
                 > dt {
@@ -58,13 +68,34 @@ div.toggles {
                     button.toggle-trigger {
                         padding: 50px 140px;
                         padding-right: 160px;
+
+                        .toggle-detail-icon--trigger {
+                            display: none;
+                            flex: 0 0 auto;
+                            align-items: center;
+
+                            img {
+                                display: block;
+                                width: auto;
+                                max-height: 33px;
+                                filter: brightness(0) invert(1);
+                            }
+                        }
+
                         @media (max-width: 1240px) {
                             padding: 30px 100px;
                             padding-right: 120px;
                         }
                         @media (max-width: $breakpoint_tablet_medium_landscape) {
+                            display: flex;
+                            align-items: center;
+                            column-gap: 20px;
                             padding: 20px 80px;
                             padding-right: 100px;
+
+                            .toggle-detail-icon--trigger {
+                                display: inline-flex;
+                            }
                         }
                         .icon {
                             width: 18px;
@@ -122,6 +153,45 @@ div.toggles {
                 button.toggle-trigger[aria-expanded='true'] > span.icon:after {
                     opacity: 1;
                 }
+
+                dd.toggle-detail-panel-wrap--mobile {
+                    display: none;
+                    margin: 0;
+
+                    @media (max-width: $breakpoint_tablet_medium_landscape) {
+                        display: block;
+                        max-height: 0;
+                        overflow: hidden;
+                        opacity: 0;
+                        visibility: hidden;
+
+                        &[aria-hidden='false'] {
+                            max-height: 10000px;
+                            opacity: 1;
+                            visibility: visible;
+                        }
+
+                        div.toggle-detail-panel {
+                            height: auto;
+                            padding: 0 80px 36px;
+                            filter: none;
+                            border-radius: 0;
+                            overflow: visible;
+
+                            &:before,
+                            div.toggle-detail-image {
+                                display: none;
+                            }
+                        }
+
+                        div.toggle-detail-content {
+                            h3,
+                            p {
+                                color: $color_white;
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -130,6 +200,10 @@ div.toggles {
             transform: translateY(80px);
             margin-left: -10%;
             height: 100%;
+
+            @media (max-width: $breakpoint_tablet_medium_landscape) {
+                display: none;
+            }
         }
 
         div.toggle-detail-icon {

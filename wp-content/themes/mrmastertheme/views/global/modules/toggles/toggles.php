@@ -104,6 +104,9 @@ if ($toggles) :
                         $toggle_count = 0;
                         foreach ($toggles as $row) {
                             $title = $row['title'] ?? '';
+                            $content = $row['content'] ?? '';
+                            $image = $row['image'] ?? null;
+                            $icon = $row['icon'] ?? null;
                             $aria_controls_value = 'toggle-' . $random_integer . '-' . $toggle_count;
                             $is_open = ($toggle_count === 0);
                         ?>
@@ -114,11 +117,35 @@ if ($toggles) :
                                             class="toggle-trigger"
                                             aria-expanded="<?= $is_open ? 'true' : 'false' ?>"
                                             aria-controls="<?= $aria_controls_value ?>">
-                                            <?= $title ?>
+                                            <?php if (!empty($icon['url'])) : ?>
+                                                <span class="toggle-detail-icon toggle-detail-icon--trigger" aria-hidden="true">
+                                                    <img src="<?= esc_url($icon['url']) ?>" alt="" loading="lazy" decoding="async">
+                                                </span>
+                                            <?php endif; ?>
+                                            <span class="toggle-trigger-text"><?= $title ?></span>
                                             <span class="icon"></span>
                                         </button>
                                     </h4>
                                 </dt>
+                                <dd
+                                    class="answer toggle-detail-panel-wrap toggle-detail-panel-wrap--mobile"
+                                    data-mobile-answer-for="<?= $aria_controls_value ?>"
+                                    aria-hidden="<?= $is_open ? 'false' : 'true' ?>">
+                                    <div class="toggle-detail-panel">
+                                        <?php if (!empty($image['url'])) : ?>
+                                            <div class="toggle-detail-image" aria-hidden="true">
+                                                <img
+                                                    src="<?= esc_url($image['url']) ?>"
+                                                    alt=""
+                                                    loading="lazy"
+                                                    decoding="async">
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="toggle-detail-content">
+                                            <?= $content ?>
+                                        </div>
+                                    </div>
+                                </dd>
                             </div>
                         <?php
                             $toggle_count++;
@@ -148,9 +175,9 @@ if ($toggles) :
                                                 loading="lazy"
                                                 decoding="async">
                                         </div>
-                                    <?php endif; ?>
+                                        <?php endif; ?>
                                     <div class="toggle-detail-content">
-                                        <?php if (!empty($icon)) : ?>
+                                        <?php if (!empty($icon['url'])) : ?>
                                             <div class="toggle-detail-icon">
                                                 <img src="<?= esc_url($icon['url']) ?>" alt="<?= esc_attr($icon['alt'] ?? '') ?>" loading="lazy" decoding="async">
                                             </div>
