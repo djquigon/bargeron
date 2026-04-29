@@ -81,6 +81,11 @@ div.callout {
     padding-bottom: calc($global_module_padding_double + 100px) !important;
 
     + .callout {
-        margin-top: -100px;
+        margin-top: -100px !important;
+    }
+
+    + section:not(.callout) {
+        margin-top: -100px !important;
+        padding-top: calc($global_module_padding_double + 100px) !important;
     }
 }

@@ -1,9 +1,9 @@
 section.toggles,
 aside.toggles,
 div.toggles {
-    padding-top: 175px !important;
-    padding-bottom: calc($global_module_padding_double + 80px) !important;
     &[data-layout='images'] {
+        padding-top: 175px !important;
+        padding-bottom: calc($global_module_padding_double + 80px) !important;
         .container {
             width: 1470px;
         }
@@ -231,6 +231,24 @@ div.toggles {
                 background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/bullet-yellow.svg)
                     no-repeat center center;
                 background-size: contain;
+            }
+        }
+    }
+
+    .button--alt {
+        &::before {
+            background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-alt-2.svg)
+                no-repeat center center !important;
+            background-size: contain;
+            filter: brightness(1) !important;
+        }
+        .text-wrap {
+            color: white;
+        }
+        &:hover,
+        &:focus {
+            .text-wrap {
+                border-bottom: 3px solid $color_yellow;
             }
         }
     }

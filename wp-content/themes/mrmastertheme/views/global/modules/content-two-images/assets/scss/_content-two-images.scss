@@ -1,6 +1,11 @@
 section.content-two-images,
 aside.content-two-images,
 div.content-two-images {
+    &.extra-padding {
+        .text-column {
+            padding-top: 50px;
+        }
+    }
     //
     &[data-layout='image-right'] {
         .container {
