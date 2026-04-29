@@ -2,6 +2,14 @@ body.not-home header.title-area {
     //maybe you need to set global styles for secondary page title area(s):
     position: relative;
 
+    @media screen and (max-width: 1024px) {
+        padding-top: 150px !important;
+    }
+
+    @media screen and (max-width: 768px) {
+        padding-top: 100px !important;
+    }
+
     &::before {
         content: '';
         display: block;

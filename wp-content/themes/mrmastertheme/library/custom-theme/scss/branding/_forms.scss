@@ -162,6 +162,10 @@ div.gform_confirmation_message {
     color: $color_blue_dark;
     text-decoration: none;
 
+    @media screen and (max-width: 768px) {
+        margin-top: 40px !important;
+    }
+
     &::before {
         content: '';
         position: absolute;
@@ -177,6 +181,16 @@ div.gform_confirmation_message {
         z-index: 2;
         pointer-events: none;
         transition: transform 0.3s ease-in-out;
+
+        @media screen and (max-width: 768px) {
+            width: 54px;
+            height: 54px;
+            right: 10px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        height: 56px;
     }
 
     &:hover,
@@ -225,6 +239,23 @@ div.gform_confirmation_message {
             transparent 0 34px,
             black 35px
         );
+
+        @media screen and (max-width: 768px) {
+            height: 56px;
+            font-size: 18px;
+            letter-spacing: 0.54px;
+
+            -webkit-mask-image: radial-gradient(
+                circle 35px at calc(100% - 34px) 50%,
+                transparent 0 34px,
+                black 35px
+            );
+            mask-image: radial-gradient(
+                circle 35px at calc(100% - 34px) 50%,
+                transparent 0 34px,
+                black 35px
+            );
+        }
 
         &::before {
             content: none;

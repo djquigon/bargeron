@@ -42,7 +42,9 @@ div.standard-content {
     }
 
     .projects {
-        padding: 55px 0;
+        @media screen and (min-width: 1024px) {
+            padding: 55px 0;
+        }
         &::before {
             @media screen and (min-width: 1910px) {
                 content: '';
@@ -127,6 +129,10 @@ div.standard-content {
             border-top: 3px solid $color_yellow;
             padding-top: 90px;
             margin-top: 40px;
+            @media screen and (max-width: 768px) {
+                padding-top: 50px;
+                margin-top: 20px;
+            }
             h4 {
                 color: $color_blue;
             }
@@ -137,6 +143,11 @@ div.standard-content {
                 font-style: normal;
                 font-weight: 400;
                 color: $color_blue;
+                @media screen and (max-width: 768px) {
+                    font-size: 23px;
+                    display: inline-block;
+                    width: fit-content;
+                }
             }
         }
     }

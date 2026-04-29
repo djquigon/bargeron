@@ -69,6 +69,7 @@ div.content-two-images {
     div.container {
         div.text-column {
             @media screen and (max-width: 1240px) {
+                padding-top: 0;
                 width: 100% !important;
             }
             .content {

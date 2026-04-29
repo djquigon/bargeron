@@ -209,6 +209,24 @@ div.toggles {
                         right: 84px;
                         top: 51px;
                     }
+                    @media screen and (max-width: 768px) {
+                        padding: 20px 40px;
+                        padding-right: 60px;
+                        font-size: 28px;
+                        .icon {
+                            right: 30px;
+                            top: 23px;
+                        }
+                    }
+                    @media screen and (max-width: 480px) {
+                        padding: 20px 30px;
+                        padding-right: 60px;
+                        font-size: 20px;
+                        .icon {
+                            right: 30px;
+                            top: 20px;
+                        }
+                    }
                 }
                 .answer {
                     color: #fff;
@@ -219,6 +237,14 @@ div.toggles {
                     }
                     &[aria-hidden='true'] {
                         display: none;
+                    }
+                    @media screen and (max-width: 768px) {
+                        padding: 20px 40px;
+                        padding-top: 0;
+                    }
+                    @media screen and (max-width: 480px) {
+                        padding: 20px 30px;
+                        padding-top: 0;
                     }
                 }
             }

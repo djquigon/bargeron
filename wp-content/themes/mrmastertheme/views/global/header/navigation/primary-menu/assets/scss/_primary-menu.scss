@@ -25,18 +25,15 @@ nav#primary-nav {
             width: 106px;
             height: 106px;
             top: 39px;
-        }
-
-        @media screen and (max-width: $breakpoint_laptop_large) {
-            left: 5%;
-        }
-
-        @media screen and (max-width: $breakpoint_before_mobile_small) {
             position: relative;
             left: auto;
             bottom: auto;
             display: block;
             margin: 0 auto 0 0;
+        }
+
+        @media screen and (max-width: $breakpoint_laptop_large) {
+            left: 5%;
         }
     }
 

@@ -123,6 +123,9 @@
         text-decoration: none;
         border: 3px solid transparent;
         border-radius: 0 !important;
+        @media screen and (max-width: 768px) {
+            font-size: 20px;
+        }
     }
     &::before {
         background: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/button-arrow-2.svg)
