@@ -4,6 +4,10 @@ div.toggles {
     &[data-layout='images'] {
         padding-top: 175px !important;
         padding-bottom: calc($global_module_padding_double + 80px) !important;
+        @media (max-width: $breakpoint_tablet_medium_landscape) {
+            padding-top: $global_module_padding_single !important;
+            padding-bottom: 0 !important;
+        }
         .container {
             width: 1470px;
         }
@@ -51,9 +55,11 @@ div.toggles {
                         button.toggle-trigger {
                             color: $color_yellow;
                         }
-                        .toggle-detail-icon {
+                        .toggle-detail-icon--trigger {
                             img {
-                                filter: brightness(0) invert(1);
+                                filter: brightness(0) saturate(100%) invert(90%)
+                                    sepia(87%) saturate(701%) hue-rotate(350deg)
+                                    brightness(102%) contrast(92%);
                             }
                         }
                     }
@@ -109,7 +115,7 @@ div.toggles {
                             }
 
                             @media (max-width: $breakpoint_tablet_medium_landscape) {
-                                right: 80px;
+                                right: 5%;
                             }
 
                             &:before {
@@ -274,6 +280,15 @@ div.toggles {
                 color: $color_black;
             }
 
+            @media screen and (max-width: $breakpoint_tablet_medium_portrait) {
+                h3 {
+                    display: none;
+                }
+                p {
+                    margin-top: 0;
+                }
+            }
+
             > *:first-child {
                 margin-top: 0;
             }
@@ -285,6 +300,9 @@ div.toggles {
     }
 
     &[data-layout='toggles'] {
+        @media (max-width: $breakpoint_tablet_medium_landscape) {
+            padding-bottom: 0 !important;
+        }
         .toggles-list {
             .toggle {
                 margin-top: 20px;
@@ -343,6 +361,38 @@ div.toggles {
                     @media screen and (max-width: 480px) {
                         padding: 20px 30px;
                         padding-top: 0;
+                    }
+                    @media (max-width: $breakpoint_tablet_medium_landscape) {
+                        padding-left: 5% !important;
+                        padding-right: 5% !important;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint_tablet_medium_landscape) {
+        .toggles-row {
+            .container {
+                width: 100%;
+                padding: 0 !important;
+                .toggles-list {
+                    border-radius: 0 !important;
+                    .toggle {
+                        margin-top: 0 !important;
+                        border-radius: 0 !important;
+                        h4 {
+                            font-size: 20px;
+                        }
+                        .toggle-trigger {
+                            padding-left: 5%;
+                            padding-right: 75px;
+                        }
+                        .toggle-detail-panel {
+                            padding-left: 5% !important;
+                            padding-right: 5% !important;
+                            padding-bottom: 25px !important;
+                        }
                     }
                 }
             }
