@@ -16,6 +16,11 @@ div.callout {
 
     @media screen and (max-width: 1024px) {
         mask-image: unset !important;
+        padding-top: $global_module_padding_double !important;
+        padding-bottom: $global_module_padding_double !important;
+    }
+
+    @media screen and (max-width: 768px) {
         padding-top: $global_module_padding_single !important;
         padding-bottom: $global_module_padding_single !important;
     }
@@ -24,11 +29,17 @@ div.callout {
         mask-size: 100% calc(100% + 75px);
         mask-position: bottom;
         padding-top: $global_module_padding_double !important;
+        @media screen and (max-width: 768px) {
+            padding-top: $global_module_padding_single !important;
+        }
     }
 
     &.flat-bottom {
         mask-size: 100% calc(100% + 75px) !important;
         padding-bottom: $global_module_padding_double !important;
+        @media screen and (max-width: 768px) {
+            padding-bottom: $global_module_padding_single !important;
+        }
     }
 
     &.reverse {
@@ -84,14 +95,16 @@ div.callout {
 }
 
 .overlap {
-    padding-bottom: calc($global_module_padding_double + 100px) !important;
+    @media screen and (min-width: 1024px) {
+        padding-bottom: calc($global_module_padding_double + 100px) !important;
 
-    + .callout {
-        margin-top: -100px !important;
-    }
+        + .callout {
+            margin-top: -100px !important;
+        }
 
-    + section:not(.callout) {
-        margin-top: -100px !important;
-        padding-top: calc($global_module_padding_double + 100px) !important;
+        + section:not(.callout) {
+            margin-top: -100px !important;
+            padding-top: calc($global_module_padding_double + 100px) !important;
+        }
     }
 }
