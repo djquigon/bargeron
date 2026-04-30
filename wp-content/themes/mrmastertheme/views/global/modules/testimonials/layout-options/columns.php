@@ -88,7 +88,6 @@ endif;
                         responsive: [{
                                 breakpoint: 1024,
                                 settings: {
-                                    arrows: false,
                                     slidesToShow: 2
                                 }
                             },

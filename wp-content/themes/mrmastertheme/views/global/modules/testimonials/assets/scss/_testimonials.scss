@@ -141,7 +141,7 @@ div.testimonials {
                     }
                 }
 
-                @media (max-width: $breakpoint_tablet_medium_portrait) {
+                @media (max-width: 1530px) {
                     position: unset;
                     // left: 50%;
                     // transform: translateX(-50%);
@@ -149,6 +149,13 @@ div.testimonials {
                     align-items: center;
                     justify-content: center;
                     gap: 10px;
+                }
+                @media (max-width: 1315px) {
+                    margin-left: -250px;
+                }
+                @media (max-width: 1024px) {
+                    width: 100%;
+                    margin-left: 0;
                 }
             }
         }
