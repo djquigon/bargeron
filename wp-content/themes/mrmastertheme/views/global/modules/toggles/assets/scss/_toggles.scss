@@ -217,6 +217,9 @@ div.toggles {
 
         div.toggle-detail-icon {
             margin-bottom: 20px;
+            img {
+                max-height: 85px;
+            }
         }
 
         div.toggle-detail-panel-wrap {
