@@ -54,10 +54,10 @@ div.toggles {
                 &:has(button.toggle-trigger[aria-expanded='true']) {
                     background-color: #2b43a7;
                     border-radius: 29px;
+                    button.toggle-trigger {
+                        color: $color_yellow;
+                    }
                     @media (max-width: $breakpoint_tablet_medium_landscape) {
-                        button.toggle-trigger {
-                            color: $color_yellow;
-                        }
                         .toggle-detail-icon--trigger {
                             img {
                                 filter: brightness(0) saturate(100%) invert(90%)

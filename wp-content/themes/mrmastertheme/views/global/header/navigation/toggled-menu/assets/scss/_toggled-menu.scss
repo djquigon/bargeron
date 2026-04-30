@@ -53,25 +53,25 @@ button#menu-toggle-trigger {
     }
 
     //'open' menu toggle button styling:
-    &[aria-expanded='true'] span.button-bars span.bar.top {
-        background-color: white;
-        top: 50%;
-        border-radius: 10px;
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
+    &[aria-expanded='true'] span.button-bars {
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 33px;
+            height: 33px;
+            background-image: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/icons/mobile-menu-close.svg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
 
-    &[aria-expanded='true'] span.button-bars span.bar.middle {
-        background-color: white;
-        border-radius: 10px;
-        display: none;
-    }
-
-    &[aria-expanded='true'] span.button-bars span.bar.bottom {
-        background-color: white;
-        bottom: auto;
-        top: 50%;
-        border-radius: 10px;
-        transform: translate(-50%, -50%) rotate(-45deg);
+        span.bar {
+            display: none;
+        }
     }
 }
 
@@ -142,6 +142,19 @@ nav#toggled-nav {
                     text-transform: capitalize;
                     text-decoration: none;
                     text-align: left;
+                }
+
+                &.current-menu-item {
+                    > a {
+                        text-decoration: underline !important;
+                    }
+                }
+            }
+            .toggled-sub-menu {
+                li.current-menu-item {
+                    > a {
+                        text-decoration: underline !important;
+                    }
                 }
             }
         }

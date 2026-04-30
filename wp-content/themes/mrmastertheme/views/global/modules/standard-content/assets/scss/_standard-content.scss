@@ -42,8 +42,13 @@ div.standard-content {
     }
 
     .projects {
-        @media screen and (min-width: 1024px) {
+        @media screen and (min-width: 1910px) {
             padding: 55px 0;
+        }
+        @media screen and (max-width: 1910px) {
+            // & + .content-row {
+            //     margin-top: 0;
+            // }
         }
         &::before {
             @media screen and (min-width: 1910px) {

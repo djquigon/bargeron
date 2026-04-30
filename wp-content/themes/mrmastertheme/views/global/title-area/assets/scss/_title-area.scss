@@ -10,6 +10,10 @@ body.not-home header.title-area {
         padding-top: 100px !important;
     }
 
+    h6 {
+        line-height: 1.2;
+    }
+
     &::before {
         content: '';
         display: block;
