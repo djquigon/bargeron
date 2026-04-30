@@ -1,6 +1,7 @@
 section.callout,
 aside.callout,
 div.callout {
+    z-index: 2;
     mask-image: url(/wp-content/themes/mrmastertheme/library/custom-theme/images/callout-mask.png);
     mask-size: 100% 100%;
     mask-position: top;
