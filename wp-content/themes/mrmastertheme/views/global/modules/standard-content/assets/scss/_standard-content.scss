@@ -42,6 +42,11 @@ div.standard-content {
     }
 
     .projects {
+        // Keep ::before (z-index: -1) clipped to this row; otherwise it stacks at the
+        // section level and can sit under span.module-settings (also z-index: -1),
+        // which makes the gradient look washed out / semi-transparent.
+        isolation: isolate;
+
         @media screen and (min-width: 1910px) {
             padding: 55px 0;
         }
