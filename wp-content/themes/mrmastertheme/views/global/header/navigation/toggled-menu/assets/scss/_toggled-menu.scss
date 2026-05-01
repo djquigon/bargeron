@@ -169,7 +169,7 @@ nav#toggled-nav {
             //
         }
 
-        @media screen and (min-width: $breakpoint_tablet_medium_portrait) {
+        @media screen and (min-width: $breakpoint_laptop_large) {
             ul.toggled-menu-desktop-primary,
             ul.toggled-menu-desktop-secondary {
                 display: none;
