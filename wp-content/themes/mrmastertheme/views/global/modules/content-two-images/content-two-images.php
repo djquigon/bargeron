@@ -79,6 +79,25 @@ $content = get_sub_field('content');
 $large_image = get_sub_field('large_image');
 $small_image = get_sub_field('small_image');
 
+$small_image_size_name = 'content-two-images-small';
+$small_image_url = '';
+$small_image_alt = '';
+
+if (!empty($small_image['ID'])) {
+    $small_image_id = (int) $small_image['ID'];
+    $small_image_alt = $small_image['alt'] ?? '';
+    $small_image_src = wp_get_attachment_image_src($small_image_id, $small_image_size_name);
+
+    if ($small_image_src) {
+        $small_image_url = $small_image_src[0];
+    } else {
+        $small_image_url = $small_image['url'] ?? '';
+    }
+} elseif (!empty($small_image['url'])) {
+    $small_image_url = $small_image['url'];
+    $small_image_alt = $small_image['alt'] ?? '';
+}
+
 $has_text = $sub_heading || $heading || $content;
 $has_images = !empty($large_image['url']) || !empty($small_image['url']);
 ?>
@@ -113,24 +132,9 @@ if ($has_text || $has_images) :
                     <img src="<?= esc_url($large_image['url']) ?>" alt="<?= esc_attr($large_image['alt'] ?? '') ?>" width="<?= esc_attr($large_image['width'] ?? '') ?>" height="<?= esc_attr($large_image['height'] ?? '') ?>" loading="lazy" decoding="async" />
                 </div>
             <?php endif; ?>
-            <?php if (!empty($small_image['ID'])) : ?>
+            <?php if ($small_image_url) : ?>
                 <div class="image image--small">
-                    <?= wp_get_attachment_image(
-                        (int) $small_image['ID'],
-                        'content-two-images-small',
-                        false,
-                        [
-                            'alt' => $small_image['alt'] ?? '',
-                            'width' => 350,
-                            'height' => 270,
-                            'loading' => 'lazy',
-                            'decoding' => 'async',
-                        ]
-                    ) ?>
-                </div>
-            <?php elseif (!empty($small_image['url'])) : ?>
-                <div class="image image--small">
-                    <img src="<?= esc_url($small_image['url']) ?>" alt="<?= esc_attr($small_image['alt'] ?? '') ?>" width="350" height="270" loading="lazy" decoding="async" />
+                    <img src="<?= esc_url($small_image_url) ?>" alt="<?= esc_attr($small_image_alt) ?>" width="350" height="270" loading="lazy" decoding="async" />
                 </div>
             <?php endif; ?>
         </div>
