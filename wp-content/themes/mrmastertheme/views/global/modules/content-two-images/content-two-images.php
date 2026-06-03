@@ -113,7 +113,22 @@ if ($has_text || $has_images) :
                     <img src="<?= esc_url($large_image['url']) ?>" alt="<?= esc_attr($large_image['alt'] ?? '') ?>" width="<?= esc_attr($large_image['width'] ?? '') ?>" height="<?= esc_attr($large_image['height'] ?? '') ?>" loading="lazy" decoding="async" />
                 </div>
             <?php endif; ?>
-            <?php if (!empty($small_image['url'])) : ?>
+            <?php if (!empty($small_image['ID'])) : ?>
+                <div class="image image--small">
+                    <?= wp_get_attachment_image(
+                        (int) $small_image['ID'],
+                        'content-two-images-small',
+                        false,
+                        [
+                            'alt' => $small_image['alt'] ?? '',
+                            'width' => 350,
+                            'height' => 270,
+                            'loading' => 'lazy',
+                            'decoding' => 'async',
+                        ]
+                    ) ?>
+                </div>
+            <?php elseif (!empty($small_image['url'])) : ?>
                 <div class="image image--small">
                     <img src="<?= esc_url($small_image['url']) ?>" alt="<?= esc_attr($small_image['alt'] ?? '') ?>" width="350" height="270" loading="lazy" decoding="async" />
                 </div>

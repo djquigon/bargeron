@@ -41,7 +41,9 @@
             add_image_size('slider-main', 1300, 650, true);
             add_image_size('slider-thumbnails', 240, 150, true);
             add_image_size('medium-portrait', 600, 400, true); 
-            add_image_size('medium-square', 600, 600, true); 
+            add_image_size('medium-square', 600, 600, true);
+            // Content Two Images module — small overlay (2x display size 350×270)
+            add_image_size('content-two-images-small', 700, 540, true);
         }
 
         //Add custom image size to Wordpress admin area
