@@ -31,7 +31,7 @@ function mobile_nav_build_primary($menu_name) {
 
             $classes = mobile_nav_build_classes('menu-item', $item);
         ?>
-            <li id="menu-item-<?= $item->ID; ?>" class="<?= $classes; ?>" <?php if (count($item->submenu_items) > 0) : ?>data-sub-menu-style="<?= $sub_menu_style ?>" <?php endif; ?>>
+            <li id="toggled-menu-item-<?= $item->ID; ?>" class="<?= $classes; ?>" <?php if (count($item->submenu_items) > 0) : ?>data-sub-menu-style="<?= $sub_menu_style ?>" <?php endif; ?>>
                 <?php
                 mobile_nav_build_parent_link($item);
 
@@ -177,7 +177,7 @@ function mobile_nav_build_sub_menu($parent_item, $submenu, $data_level = 2) {
         foreach ($submenu as $item) :
             $classes = mobile_nav_build_classes('sub-menu-item', $item);
         ?>
-            <li id="menu-item-<?= $item->ID; ?>" class="<?= $classes; ?>">
+            <li id="toggled-menu-item-<?= $item->ID; ?>" class="<?= $classes; ?>">
                 <?php
                 mobile_nav_build_parent_link($item);
 

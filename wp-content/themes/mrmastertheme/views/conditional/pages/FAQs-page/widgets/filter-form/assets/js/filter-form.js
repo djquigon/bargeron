@@ -9,8 +9,8 @@ function initializeFAQCategoryFilterForm() {
         var faq_filter_select = document.querySelector('form#faq-filters select#faq-categories');
 
         //declare a variable to hold the FAQ toggles:
-        if (document.querySelectorAll('dl.faqs-list div.toggle')) {
-            var faq_toggles = document.querySelectorAll('dl.faqs-list div.toggle');
+        if (document.querySelectorAll('ul.faqs-list li.toggle')) {
+            var faq_toggles = document.querySelectorAll('ul.faqs-list li.toggle');
 
             //define a function that is triggered by the <select>'s change event:
             faq_filter_select.onchange = function() {

@@ -50,26 +50,26 @@
 
     if ($question && $answer && $aria_controls_value) :
  ?> 
-        <div class="toggle" aria-hidden="false" <?= $category_ids_attribute_string ?>>
-            <dt class="question">
+        <li class="toggle" aria-hidden="false" <?= $category_ids_attribute_string ?>>
+            <div class="question">
                 <h3>
-                    <button 
-                        class="toggle-trigger" 
-                        aria-expanded="<?= $is_open ? 'true' : 'false' ?>"   
+                    <button
+                        class="toggle-trigger"
+                        aria-expanded="<?= $is_open ? 'true' : 'false' ?>"
                         aria-controls="<?= $aria_controls_value ?>"
                     >
                         <?= $question ?>
                         <span class="icon"></span>
                     </button>
                 </h3>
-            </dt>
-            <dd 
-                class="answer" 
+            </div>
+            <div
+                class="answer"
                 id="<?= $aria_controls_value ?>" aria-hidden="<?= $is_open ? 'false' : 'true' ?>"
             >
                 <?= $answer ?>
-            </dd>      
-        </div>
+            </div>
+        </li>
 <?php
     endif;
 ?>

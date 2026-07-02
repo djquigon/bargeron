@@ -145,26 +145,35 @@
             //convert the $content string to a PHP DOMDocument object:
             $dom = new DOMDocument();
             libxml_use_internal_errors(true); // Suppress errors for malformed HTML
-            $dom->loadHTML('' . $content); // Add encoding declaration (I removed it, I don't think it's necessary)
+            // Wrap in a known container and declare UTF-8 so loadHTML() doesn't
+            // inject its own <!DOCTYPE>/<html>/<body> boilerplate into our fragment.
+            $dom->loadHTML(
+                '<?xml encoding="utf-8" ?><div id="mandr-picture-wrap">' . $content . '</div>',
+                LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD
+            );
             libxml_clear_errors();
 
             //grab all of the img tags from within the content string turned DOMDocument object:
             $images = $dom->getElementsByTagName('img');
 
-            //loop through each image tag
-            foreach ($images as $image) {
-                //write a new <picture> to the DOMDocument:    
+            //loop through each image tag (iterate over a static copy since we move nodes)
+            foreach (iterator_to_array($images) as $image) {
+                //write a new <picture> to the DOMDocument:
                 $wrapper = $dom->createElement('picture');
                 //move the <img> to within the <picture>
                 $image->parentNode->insertBefore($wrapper, $image);
-                $wrapper->appendChild($image); 
+                $wrapper->appendChild($image);
             }
 
-            //save the changes to the HTML
-            $dom->saveHTML();
-
-            //re-assign the $content string to be our adjusted DOMDocument object 
-            $content = $dom->saveHTML();
+            //re-assign $content to only the inner HTML of our wrapper, so none of
+            //DOMDocument's implied document tags leak back into the page.
+            $wrap = $dom->getElementById('mandr-picture-wrap');
+            if ($wrap) {
+                $content = '';
+                foreach ($wrap->childNodes as $child) {
+                    $content .= $dom->saveHTML($child);
+                }
+            }
         }
 
         return $content;

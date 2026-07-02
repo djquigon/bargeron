@@ -30,7 +30,7 @@ div.toggles {
             }
         }
 
-        dl.toggles-list {
+        ul.toggles-list {
             background: linear-gradient(
                 299deg,
                 #1700c2 14.1%,
@@ -40,15 +40,17 @@ div.toggles {
             box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.23);
             border-radius: 29px;
             display: block;
+            list-style: none;
             margin: 0;
             margin-right: -15%;
+            padding: 0;
             z-index: 2;
 
             @media (max-width: $breakpoint_tablet_medium_landscape) {
                 margin-right: 0;
             }
 
-            div.toggle {
+            li.toggle {
                 display: block;
 
                 &:has(button.toggle-trigger[aria-expanded='true']) {
@@ -68,7 +70,7 @@ div.toggles {
                     }
                 }
 
-                > dt {
+                > .question {
                     h4 {
                         margin: 0;
                         color: $color_white;
@@ -163,7 +165,7 @@ div.toggles {
                     opacity: 1;
                 }
 
-                dd.toggle-detail-panel-wrap--mobile {
+                .toggle-detail-panel-wrap--mobile {
                     display: none;
                     margin: 0;
 

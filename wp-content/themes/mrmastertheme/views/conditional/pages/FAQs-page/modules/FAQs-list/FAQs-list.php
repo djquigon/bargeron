@@ -14,7 +14,7 @@
             if ($FAQs) :
         ?>
             <span id="faqs-list-loading-animation" aria-hidden="true"></span>
-            <dl class="faqs-list">
+            <ul class="faqs-list">
                 <?php
                     //we need to initialize a random number to use as a base value for the ID that we will assign to each answer. Basically, this random number will apply to THIS list of FAQs. This is all good HTML semantics & accessibility practice to avoid duplicate IDs
                     $random_integer = rand(0,999);
@@ -60,7 +60,7 @@
                         }
                     }
                 ?>
-            </dl>
+            </ul>
         <?php
             endif;
         ?>

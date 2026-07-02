@@ -1,7 +1,14 @@
-dl div.toggle {
-    //.toggle class name is required for this SCSS to be applied. <dt> tags MUST be used inside a <dl>, even if there's just one <dt>
+ul:has(> li.toggle) {
+    //reset default list styling so browser bullets/indentation don't show through
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-    > dt {
+ul li.toggle {
+    //.toggle class name is required for this SCSS to be applied. Each toggle is a <li> inside a <ul>
+
+    > .question {
         position: relative;
 
         //.toggle-trigger class applied to the <button> is essential for the toggle JavaScript to work
@@ -67,7 +74,7 @@ dl div.toggle {
         }
     }
 
-    > dd {
+    > .answer {
         display: block;
         max-height: 0px;
         overflow: hidden;

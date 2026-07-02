@@ -99,7 +99,7 @@ if ($toggles) :
             <?php if ($layout === 'images') : ?>
                 <?php $random_integer = rand(0, 999); ?>
                 <div class="toggles-images-layout">
-                    <dl class="toggles-list">
+                    <ul class="toggles-list">
                         <?php
                         $toggle_count = 0;
                         foreach ($toggles as $row) {
@@ -110,8 +110,8 @@ if ($toggles) :
                             $aria_controls_value = 'toggle-' . $random_integer . '-' . $toggle_count;
                             $is_open = ($toggle_count === 0);
                         ?>
-                            <div class="toggle" aria-hidden="false">
-                                <dt class="question">
+                            <li class="toggle" aria-hidden="false">
+                                <div class="question">
                                     <h4>
                                         <button
                                             class="toggle-trigger"
@@ -126,8 +126,8 @@ if ($toggles) :
                                             <span class="icon"></span>
                                         </button>
                                     </h4>
-                                </dt>
-                                <dd
+                                </div>
+                                <div
                                     class="answer toggle-detail-panel-wrap toggle-detail-panel-wrap--mobile"
                                     data-mobile-answer-for="<?= $aria_controls_value ?>"
                                     aria-hidden="<?= $is_open ? 'false' : 'true' ?>">
@@ -145,13 +145,13 @@ if ($toggles) :
                                             <?= $content ?>
                                         </div>
                                     </div>
-                                </dd>
-                            </div>
+                                </div>
+                            </li>
                         <?php
                             $toggle_count++;
                         }
                         ?>
-                    </dl>
+                    </ul>
                     <div class="toggle-detail-panels">
                         <?php
                         $toggle_count = 0;
@@ -193,7 +193,7 @@ if ($toggles) :
                     </div>
                 </div>
             <?php else : ?>
-                <dl class="toggles-list">
+                <ul class="toggles-list">
                     <?php
                     $random_integer = rand(0, 999);
                     $toggle_count = 0;
@@ -219,7 +219,7 @@ if ($toggles) :
                         $toggle_count++;
                     }
                     ?>
-                </dl>
+                </ul>
             <?php endif; ?>
             <span
                 class="container-settings"
