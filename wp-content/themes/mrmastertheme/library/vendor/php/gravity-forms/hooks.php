@@ -74,11 +74,21 @@
     @param $form array required The whole form object
     @return string The new HTML for the button
     */
-	add_filter( 'gform_submit_button', 'mandr_form_submit_button', 10, 5 );
-	function mandr_form_submit_button ( $button, $form ){
-		$button = str_replace( "input", "button", $button );
-		$button = str_replace( "/", "", $button );
-		$button .= "{$form['button']['text']}</button>";
+	add_filter( 'gform_submit_button', 'mandr_form_submit_button', 10, 2 );
+	function mandr_form_submit_button( $button, $form ) {
+		// Modern Gravity Forms already outputs a real <button>…</button>.
+		// The old input→button conversion would strip the closing slash and
+		// append another label + </button>, producing a duplicate submit control.
+		if ( stripos( $button, '<button' ) !== false ) {
+			return $button;
+		}
+
+		// Legacy GF rendered a self-closing <input type="submit" … /> — convert it.
+		$button = preg_replace( '/<input/i', '<button', $button, 1 );
+		$button = preg_replace( '/\s*\/>/', '>', $button, 1 );
+		$label = ! empty( $form['button']['text'] ) ? $form['button']['text'] : 'Submit';
+		$button .= esc_html( $label ) . '</button>';
+
 		return $button;
 	}
 
